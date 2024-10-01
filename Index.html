@@ -1,196 +1,69 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <title>Panel S PMS</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
-    <header class="header">
-        <div class="menu conteiner">
-            <a href="#" class="logo">logo</a>
-            <input type="checkbox" id="menu" />
-            <label for="menu">
-                <img src="imagenes/menu.png" class="menu-icono" alt="menu">
-            </label>
-            <nav class="navbar">
-                <ul>
-                    <li><a href="Index.html">Inicio</a></li>
-                    <li><a href="Carta.html">Carta</a></li>
-                    <li><a href="Promociones.html">Promociones</a></li>
-                    <li><a href="iniciarSesion.html">Iniciar Sesion</a></li>
-                    <li><a href="registrarse.html">Registrarse</a></li>
-                </ul>
-            </nav>
+    <!-- Header -->
+    <header class="main-header">
+        <div class="logo">
+            <img src="imagenes/carro-nuevo.png" alt="Logo" />
+            <h2>Panel S PMS</h2>
         </div>
-        <div class="header-content container">
-
-            <div class="header-txt">
-                <h1>El mejor menu que puedas elegir</h1>
-                <p>
-                    Disfruta del auténtico sabor de nuestros pollos a la brasa, preparados con los ingredientes más
-                    frescos y una receta tradicional.
-                    En nuestra pollería, nos enorgullecemos de ofrecer una experiencia única que combina calidad, sabor
-                    y servicio excepcional. ¡Ven y prueba
-                    nuestras especialidades que te harán volver por más!.
-                </p>
-                <a href="#" class="btn-1">Informacion</a>
-            </div>
-            <div class="header-img">
-                <img src="imagenes/P1.jpg" alt="">
-            </div>
-
+        <div class="user-info">
+            <span>Bienvenido, Administrador</span>
+            <button class="logout">Salir</button>
         </div>
-
     </header>
 
-    <section class="about container">
-        <div class="about-img">
-            <img src="imagenes/left.png" alt="">
-        </div>
-        <div class="about-txt">
-
-            <span>$100</span>
-            <h2>Nosotros</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit quam distinctio facere ratione
-                nesciunt molestiae mollitia debitis soluta officiis velit, ab nulla sit, quas ipsa molestias
-                voluptatibus reprehenderit. Quae, eaque.
-            </p>
-            <a href="#" class="btn-1">Información</a>
-        </div>
-    </section>
-
-    <main class="food container">
-        <h2>Los mejores platillos</h2>
-        <div class="food-content">
-
-            <div class="food-1">
-
-                <div class="food-img">
-                    <img src="imagenes/f1.jpg" alt="">
-                </div>
-                <div class="food-txt">
-                    <h3>Platillo</h3>
-                    <p>
-                        Odit, nostrum nesciunt possimus
-                        eligendi quasi dolore sequi a, placeat
-                        fugiat qui! Deleniti, quibusdam molestias!
-                    </p>
-                    <span>$200</span>
-                </div>
-
-            </div>
-
-            <div class="food-1">
-
-                <div class="food-img">
-                    <img src="imagenes/f2.jpg" alt="">
-                </div>
-                <div class="food-txt">
-                    <h3>Platillo</h3>
-                    <p>
-                        Odit, nostrum nesciunt possimus
-                        eligendi quasi dolore sequi a, placeat
-                        fugiat qui! Deleniti, quibusdam molestias!
-                    </p>
-                    <span>$200</span>
-                </div>
-
-            </div>
-
-            <div class="food-1">
-
-                <div class="food-img">
-                    <img src="imagenes/f3.jpg" alt="">
-                </div>
-                <div class="food-txt">
-                    <h3>Platillo</h3>
-                    <p>
-                        Odit, nostrum nesciunt possimus
-                        eligendi quasi dolore sequi a, placeat
-                        fugiat qui! Deleniti, quibusdam molestias!
-                    </p>
-                    <span>$200</span>
-                </div>
-
-            </div>
-
-            <div class="food-1">
-
-                <div class="food-img">
-                    <img src="imagenes/f4.jpg" alt="">
-                </div>
-                <div class="food-txt">
-                    <h3>Platillo</h3>
-                    <p>
-                        Odit, nostrum nesciunt possimus
-                        eligendi quasi dolore sequi a, placeat
-                        fugiat qui! Deleniti, quibusdam molestias!
-                    </p>
-                    <span>$200</span>
-                </div>
-
-            </div>
-
-        </div>
-
-        <a href="#" class="btn-1">Informacion</a>
-
-    </main>
-
-    <section class="products container">
-
-        <h2>Productos</h2>
-        <div class="product-1">
-            <img src="imagenes/m1.jpg" alt="">
-            <img src="imagenes/m2.jpg" alt="">
-        </div>
-
-        <div class="product-2">
-            <img src="imagenes/m3.jpg" alt="">
-            <img src="imagenes/m4.jpg" alt="">
-            <img src="imagenes/m5.jpg" alt="">
-        </div>
-
-        <a href="#" class="btn-1">Informacion</a>
-
-    </section>
-
-    <footer class="footer container">
-
-        <div class="link">
-            <h3>Siguenos</h3>
+    <!-- Container for Sidebar and Main Content -->
+    <div class="container">
+        <!-- Sidebar -->
+        <nav class="sidebar">
             <ul>
-                <li><a href="https://www.youtube.com" target="_blank"><i class="fab fa-youtube"></i></a></li>
-                <li><a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>li>
-                <li><a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a> </li>
-                <li><a href="https://www.tiktok.com" target="_blank"><i class="fab fa-tiktok"></i></a></li>
+                <li><a href="#" class="active">Inicio</a></li>
+                <li><a href="#">Categoría</a></li>
+                <li><a href="#">Entradas</a></li>
+                <li><a href="#">Salidas</a></li>
+                <li><a href="#">Informes</a></li>
+                <li><a href="#">Buscar</a></li>
+                <li><a href="#">Ajustes</a></li>
+                <li><a href="#">Cerrar sesión</a></li>
             </ul>
-        </div>
+        </nav>
 
-        <div class="link">
-            <h3>Empresa</h3>
-            <ul>
-                <li><a href="NuestraHistoria.html">Nuestra Historia</a></li>
-                <li><a href="Trabaja.html">Trabaja con Nosotros</a></li>
-            </ul>
-        </div>
-
-        <div class="link">
-            <h3>Atención al cliente</h3>
-            <ul>
-                <li><a href="Preguntas.html">Preguntas frecuentes</a></li>
-                <li><a href="PoliticaPrivacidad.html">Politicas de Privacidad</a></li>
-                <li><a href="PoliticasDelivery.html">Politicas de Delivery</a></li>
-                <li><a href="TerminosCondiciones.html">Terminos y Condicines</a></li>
-            </ul>
-        </div>
-
-    </footer>
+        <!-- Main Content -->
+        <main class="main-content">
+            <section class="dashboard">
+                <div class="card card-blue">
+                    <h3>0</h3>
+                    <p>vehículos estacionados</p>
+                </div>
+                <div class="card card-gray">
+                    <h3>1</h3>
+                    <p>Vehículos Partidos</p>
+                </div>
+                <div class="card card-red">
+                    <h3>6</h3>
+                    <p>Categoría disponible</p>
+                </div>
+                <div class="card card-yellow">
+                    <h3>$4.00</h3>
+                    <p>Ganancias Totales</p>
+                </div>
+                <div class="card card-gray">
+                    <h3>1</h3>
+                    <p>Registros totales</p>
+                </div>
+                <div class="card card-blue">
+                    <h3>89</h3>
+                    <p>Plazas de aparcamiento totales</p>
+                </div>
+            </section>
+        </main>
+    </div>
 </body>
-
 </html>
