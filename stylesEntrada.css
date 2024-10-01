@@ -1,0 +1,177 @@
+/* Sección de entradas */
+.entry-section {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+/* Formulario de añadir vehículo */
+.add-entry {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 45%;
+}
+
+.add-entry h3 {
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-group input, 
+.form-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.btn-submit {
+    background-color: #3498db;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%;
+}
+
+.btn-submit:hover {
+    background-color: #2980b9;
+}
+
+/* Limitaciones de vehículos */
+.vehicle-limitations {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 45%;
+}
+
+.vehicle-limitations h3 {
+    margin-bottom: 20px;
+}
+
+.limit-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.limit-list li {
+    background-color: #fff;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-size: 16px;
+}
+
+/* Tabla de entradas */
+.admin-entradas {
+    margin-top: 20px;
+}
+
+.admin-entradas h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.table-entradas {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.table-entradas thead {
+    background-color: #f4f4f4;
+    text-align: left;
+}
+
+.table-entradas th, 
+.table-entradas td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+.table-entradas th {
+    font-weight: bold;
+}
+
+.table-entradas tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.table-entradas tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Estilos para el estado */
+.estado {
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.activado {
+    background-color: #28a745;
+    color: #fff;
+}
+
+.desactivado {
+    background-color: #dc3545;
+    color: #fff;
+}
+
+/* Botones de acción */
+.btn {
+    padding: 8px 12px;
+    border: none;
+    cursor: pointer;
+    margin: 0 2px;
+}
+
+.salida {
+    background-color: #28a745;
+    color: white;
+}
+
+.editar {
+    background-color: #007bff;
+    color: white;
+}
+
+.borrar {
+    background-color: #dc3545;
+    color: white;
+}
+
+/* Paginación */
+.pagination {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.pagination button {
+    padding: 8px 12px;
+    margin: 0 5px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+}
+
+.pagination button:hover {
+    background-color: #0056b3;
+}
