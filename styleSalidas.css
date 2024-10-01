@@ -1,0 +1,439 @@
+/* General */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    
+}
+
+h2 {
+    margin: 0;
+}
+
+h3 {
+    color: #333;
+}
+
+.container {
+    display: flex;
+}
+
+main {
+    flex-grow: 1;
+    padding: 20px;
+}
+
+/* Header */
+.main-header {
+    background-color: #2C3E50;
+    color: #ecf0f1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+.main-header .logo {
+    display: flex;
+    align-items: center;
+}
+
+.main-header .logo img {
+    width: 40px;
+    margin-right: 10px;
+}
+
+.main-header .user-info {
+    display: flex;
+    align-items: center;
+}
+
+.main-header .logout {
+    background-color: #3498db;
+    border: none;
+    color: white;
+    padding: 8px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.main-header .logout:hover {
+    background-color: #2980b9;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 220px;
+    background-color: #34495e;
+    padding: 20px 0;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar ul li {
+    margin-bottom: 10px;
+}
+
+.sidebar ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    display: block;
+}
+
+.sidebar ul li a.active, 
+.sidebar ul li a:hover {
+    background-color: #2980b9;
+}
+
+/* General styling for the main container */
+.main-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    background-color: #f8f8f8;
+    font-family: Arial, sans-serif;
+}
+
+.top-panels {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+/* Styling for the form container */
+.vehicle-panel {
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    padding: 20px;
+    max-width: 400px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    flex: 1;
+}
+/* Title styling for both panels */
+.vehicle-panel h3,
+.vehicle-limits h3 {
+    margin: 0;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e0e0e0;
+    font-size: 1.2em;
+    color: #333;
+}
+/* Main Content */
+.main-content {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Form elements styling */
+.vehicle-panel label {
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555;
+}
+
+.vehicle-panel input[type="text"],
+.vehicle-panel select {
+    width: calc(100% - 12px);
+    padding: 8px;
+    border: 1px solid #cccccc;
+    border-radius: 3px;
+    font-size: 14px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+/* Styling for the submit button */
+.vehicle-panel .add-vehicle {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    border: none;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 3px;
+    font-size: 14px;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.vehicle-panel .add-vehicle:hover {
+    background-color: #0056b3;
+}
+
+/* Styling for the "Limitación de Vehículos" panel */
+.vehicle-limits {
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    padding: 20px;
+    max-width: 400px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    flex: 1;
+}
+
+/* Styling for the list in the vehicle limits panel */
+.vehicle-limits ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.vehicle-limits li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid #e0e0e0;
+    font-size: 14px;
+    color: #555;
+}
+
+.vehicle-limits li:last-child {
+    border-bottom: none;
+}
+
+/* Styling for the limit values */
+.vehicle-limits .limit-value {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.vehicle-limits .current {
+    background-color: #198754;
+    color: white;
+    padding: 2px 8px;
+    border-radius: 15px;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+.vehicle-list {
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+
+.vehicle-list h3 {
+    margin: 0;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e0e0e0;
+    font-size: 1.2em;
+    color: #333;
+}
+
+.table-controls {
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#vehicle-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+#vehicle-table thead {
+    background-color: #f2f2f2;
+}
+
+#vehicle-table th, 
+#vehicle-table td {
+    padding: 8px;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+#vehicle-table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+#vehicle-table tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+.table-pagination {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+}
+
+.table-pagination button {
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    background-color: #f2f2f2;
+    cursor: pointer;
+}
+
+.table-pagination button:hover {
+    background-color: #ddd;
+}
+
+.vehicle-status {
+    background-color: #198754;
+    color: white;
+    padding: 2px 8px;
+    border-radius: 15px;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+.action-button {
+    background-color: #007bff;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.action-button:hover {
+    background-color: #0056b3;
+}
+
+
+/* Vehicle List */
+.table-common {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table-common th, 
+.table-common td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+.table-common tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.table-common tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Ajustar el ancho de los paneles superiores */
+.vehicle-panel,
+.vehicle-limits {
+    flex: 1;
+    max-width: calc(50% - 10px); /* 10px es la mitad del gap */
+}
+
+/* Ajustar el estilo de la lista de vehículos para ocupar todo el ancho */
+.vehicle-list {
+    width: 100%;
+}
+
+/* Estilos para el apartado de Límite de Vehículos */
+.vehicle-limits ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.vehicle-limits li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid #e0e0e0;
+    font-size: 14px;
+    color: #555;
+}
+
+.vehicle-limits li:last-child {
+    border-bottom: none;
+}
+
+/* Nuevo estilo para el contador actual */
+.current-count {
+    background-color: #28a745;  /* Color verde */
+    color: white;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+
+.vehicle-limits {
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.vehicle-limits h3 {
+    margin: 0 0 15px 0;
+    color: #333;
+    font-size: 1.2em;
+    text-align: center;
+    border-bottom: 2px solid #e0e0e0;
+    padding-bottom: 10px;
+}
+
+.vehicle-limits ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.vehicle-limits li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #e0e0e0;
+    font-size: 14px;
+    color: #555;
+}
+
+.vehicle-limits li:last-child {
+    border-bottom: none;
+}
+
+.vehicle-limits .vehicle-type {
+    font-weight: bold;
+    flex: 1;
+}
+
+.vehicle-limits .vehicle-count {
+    display: flex;
+    align-items: center;
+    min-width: 80px;
+    justify-content: flex-end;
+}
+
+.current-count {
+    background-color: #28a745;
+    color: white;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-weight: bold;
+    margin-right: 5px;
+    min-width: 25px;
+    text-align: center;
+}
