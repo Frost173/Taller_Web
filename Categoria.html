@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel S PMS</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="stylesCategoria.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="main-header">
+        <div class="logo">
+            <img src="imagenes/carro-nuevo.png" alt="Logo" />
+            <h2>Panel S PMS</h2>
+        </div>
+        <div class="user-info">
+            <span>Bienvenido, Administrador</span>
+            <button class="logout">Salir</button>
+        </div>
+    </header>
+
+    <!-- Container for Sidebar and Main Content -->
+    <div class="container">
+        <!-- Sidebar -->
+        <nav class="sidebar">
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="Categoria.html" class="active">Categoría</a></li>
+                <li><a href="Entrada.html">Entradas</a></li>
+                <li><a href="#">Salidas</a></li>
+                <li><a href="#">Informes</a></li>
+                <li><a href="#">Buscar</a></li>
+                <li><a href="#">Ajustes</a></li>
+                <li><a href="#">Cerrar sesión</a></li>
+            </ul>
+        </nav>
+
+        <main class="main-content">
+            <section class="category-section">
+                <!-- Formulario para añadir categoría -->
+                <div class="add-category">
+                    <h3>Añadir Categoría</h3>
+                    <form action="#">
+                        <div class="form-group">
+                            <label for="area">Número de área de estacionamiento</label>
+                            <input type="text" id="area" name="area">
+                        </div>
+                        <div class="form-group">
+                            <label for="vehicle-type">Tipo de vehículo</label>
+                            <input type="text" id="vehicle-type" name="vehicle-type">
+                        </div>
+                        <div class="form-group">
+                            <label for="vehicle-limit">Límite de vehículos</label>
+                            <input type="number" id="vehicle-limit" name="vehicle-limit">
+                        </div>
+                        <div class="form-group">
+                            <label for="charge">Cargo de estacionamiento</label>
+                            <input type="number" id="charge" name="charge" step="0.01">
+                        </div>
+                        <button type="submit" class="btn-submit">Enviar</button>
+                    </form>
+                </div>
+
+                <!-- Detalles de categorías -->
+                <div class="category-details">
+                    <h3>Detalles</h3>
+                    <div class="details-list">
+                        <div class="detail-item">
+                            <span>Car</span>
+                            <span>$4.00</span>
+                        </div>
+                        <div class="detail-item">
+                            <span>Motorcycle</span>
+                            <span>$2.00</span>
+                        </div>
+                        <div class="detail-item">
+                            <span>Mini Van</span>
+                            <span>$5.00</span>
+                        </div>
+                        <div class="detail-item">
+                            <span>Pickup Van</span>
+                            <span>$5.00</span>
+                        </div>
+                        <div class="detail-item">
+                            <span>Minibus</span>
+                            <span>$6.00</span>
+                        </div>
+                        <div class="detail-item">
+                            <span>Camiones</span>
+                            <span>$2.00</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <div class="admin-categorias">
+                <h2>Administrar Categorías</h2>
+                <table class="table-categorias">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Número</th>
+                            <th>Tipo de Vehículo</th>
+                            <th>Límite de Vehículos</th>
+                            <th>Precio</th>
+                            <th>Estado</th>
+                            <th>Acción</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>4535</td>
+                            <td>Car</td>
+                            <td>18</td>
+                            <td>$4.00</td>
+                            <td><span class="estado activado">Activado</span></td>
+                            <td>
+                                <button class="btn desactivar">Deactivate</button>
+                                <button class="btn editar">✎</button>
+                                <button class="btn borrar">🗑</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>6443</td>
+                            <td>Motorcycle</td>
+                            <td>26</td>
+                            <td>$2.00</td>
+                            <td><span class="estado activado">Activado</span></td>
+                            <td>
+                                <button class="btn desactivar">Deactivate</button>
+                                <button class="btn editar">✎</button>
+                                <button class="btn borrar">🗑</button>
+                            </td>
+                        </tr>
+                        <!-- Más filas -->
+                    </tbody>
+                </table>
+                <div class="pagination">
+                    <button>Previous</button>
+                    <button>1</button>
+                    <button>Next</button>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
