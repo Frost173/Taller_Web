@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Panel S PMS</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="stylesBuscar.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
 </head>
 <body>
     <!-- Header -->
@@ -27,9 +30,9 @@
                 <li><a href="index.html" class="active">Inicio</a></li>
                 <li><a href="Categoria.html">Categoría</a></li>
                 <li><a href="Entrada.html">Entradas</a></li>
-                <li><a href="Salidas.html">Salidas</a></li>
+                <li><a href="#">Salidas</a></li>
                 <li><a href="#">Informes</a></li>
-                <li><a href="Buscar.html">Buscar</a></li>
+                <li><a href="#">Buscar</a></li>
                 <li><a href="Ajuste.html">Ajustes</a></li>
                 <li><a href="#">Cerrar sesión</a></li>
             </ul>
@@ -37,32 +40,14 @@
 
         <!-- Main Content -->
         <main class="main-content">
-            <section class="dashboard">
-                <div class="card card-blue">
-                    <h3>0</h3>
-                    <p>vehículos estacionados</p>
+            <div class="search-container">
+                <h2><i class="fas fa-search"></i> Buscar datos <span class="search-hint">|Solo los últimos 30 días</span></h2>
+                <div class="search-box">
+                    <input type="text" id="search-input" placeholder="Buscar por vehículo o número de serie de recibo">
+                    <button type="button" class="search-button"><i class="fas fa-search"></i></button>
                 </div>
-                <div class="card card-gray">
-                    <h3>1</h3>
-                    <p>Vehículos Partidos</p>
-                </div>
-                <div class="card card-red">
-                    <h3>6</h3>
-                    <p>Categoría disponible</p>
-                </div>
-                <div class="card card-yellow">
-                    <h3>$4.00</h3>
-                    <p>Ganancias Totales</p>
-                </div>
-                <div class="card card-gray">
-                    <h3>1</h3>
-                    <p>Registros totales</p>
-                </div>
-                <div class="card card-blue">
-                    <h3>89</h3>
-                    <p>Plazas de aparcamiento totales</p>
-                </div>
-            </section>
+                <p class="search-message">¡Busca y obtén resultados aquí!</p>
+            </div>
         </main>
     </div>
 </body>
