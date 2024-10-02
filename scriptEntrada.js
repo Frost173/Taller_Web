@@ -12,72 +12,75 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function addVehicle(event) {
-    event.preventDefault(); // Evitar que el formulario se envíe
-
-    console.log("Función addVehicle llamada"); // Mensaje de depuración
+    event.preventDefault();
 
     const placa = document.getElementById('placa').value;
     const tipo = document.getElementById('tipo').value;
     const estacionamiento = document.getElementById('numero-estacionamiento').value;
     const precio = document.getElementById('precio').value;
-    const fechaHora = new Date().toLocaleString();
+    const fechaHora = new Date().toISOString().slice(0, 19).replace('T', ' ');
     const estado = "Estacionado";
 
-    console.log("Datos capturados:", { placa, tipo, estacionamiento, precio, fechaHora, estado });
-
-    const vehicleTable = document.querySelector("#vehicle-table tbody");
-    if (!vehicleTable) {
-        console.error('La tabla de vehículos no se encontró en el DOM');
-        return;
-    }
-
-    const rowCount = vehicleTable.rows.length;
-
-    if (rowCount === 1 && vehicleTable.rows[0].cells[0].innerText === "No hay datos disponibles en la tabla") {
-        vehicleTable.innerHTML = ''; // Limpiar la tabla si solo hay un mensaje de "no hay datos"
-    }
-
-    const row = vehicleTable.insertRow();
-    row.insertCell(0).innerText = rowCount + 1; // Número de vehículo
-    row.insertCell(1).innerText = placa;
-    row.insertCell(2).innerText = estacionamiento;
-    row.insertCell(3).innerText = fechaHora;
-    row.insertCell(4).innerHTML = `<span class="vehicle-status">${estado}</span>`;
-    const actionCell = row.insertCell(5);
-
-    const printButton = document.createElement('button');
-    printButton.innerText = 'Imprimir';
-    printButton.classList.add('action-button');
-    printButton.onclick = function() {
-        const content = `
-            <h1>Información del Vehículo</h1>
-            <p><strong>Número de Vehículo:</strong> ${placa}</p>
-            <p><strong>Tipo:</strong> ${tipo}</p>
-            <p><strong>Número de Área:</strong> ${estacionamiento}</p>
-            <p><strong>Precio:</strong> ${precio}</p>
-            <p><strong>Hora de Llegada:</strong> ${fechaHora}</p>
-            <p><strong>Estado:</strong> ${estado}</p>
-        `;
-
-        const newWindow = window.open('', '', 'width=600,height=400');
-        newWindow.document.write(content);
-        newWindow.document.close();
-        newWindow.print();
+    // Crear objeto con los datos del vehículo
+    const vehicleData = {
+        placa,
+        tipo,
+        estacionamiento,
+        precio,
+        fechaHora,
+        estado
     };
-    actionCell.appendChild(printButton);
 
-    console.log("Vehículo agregado a la tabla");
+    // Enviar datos al servidor
+    fetch('agregar_vehiculo.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(vehicleData),
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            // Actualizar la tabla en el frontend
+            actualizarTablaVehiculos();
+        } else {
+            console.error('Error al agregar vehículo:', data.error);
+        }
+    })
+    .catch((error) => {
+        console.error('Error:', error);
+    });
 
-    // Limpiar los campos del formulario
+    // Limpiar el formulario
     document.getElementById('placa').value = '';
     document.getElementById('tipo').value = 'Seleccione-tipo';
     document.getElementById('numero-estacionamiento').value = 'Seleccione-tipo';
     document.getElementById('precio').value = 'Seleccione-precio';
-
-    // Actualiza la paginación después de agregar un nuevo vehículo
-    displayPage(currentPage);
 }
 
+function actualizarTablaVehiculos() {
+    fetch('obtener_vehiculos.php')
+    .then(response => response.json())
+    .then(data => {
+        // Actualizar la tabla con los datos recibidos
+        const vehicleTable = document.querySelector("#vehicle-table tbody");
+        vehicleTable.innerHTML = '';
+        data.forEach((vehiculo, index) => {
+            const row = vehicleTable.insertRow();
+            row.insertCell(0).innerText = index + 1;
+            row.insertCell(1).innerText = vehiculo.placa;
+            row.insertCell(2).innerText = vehiculo.estacionamiento;
+            row.insertCell(3).innerText = vehiculo.fecha_hora;
+            row.insertCell(4).innerHTML = `<span class="vehicle-status">${vehiculo.estado}</span>`;
+            // Agregar botón de imprimir aquí si es necesario
+        });
+        displayPage(1);
+    })
+    .catch((error) => {
+        console.error('Error:', error);
+    });
+}
 
 // Función para mostrar una página específica
 function displayPage(page) {
