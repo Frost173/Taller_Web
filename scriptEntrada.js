@@ -11,15 +11,43 @@ document.addEventListener('DOMContentLoaded', function() {
     displayPage(currentPage);
 });
 
+function actualizarTablaVehiculos() {
+    fetch('obtener_vehiculos.php')
+    .then(response => response.json())
+    .then(data => {
+        const vehicleTable = document.querySelector("#vehicle-table tbody");
+        vehicleTable.innerHTML = '';
+        data.forEach((vehiculo, index) => {
+            const row = vehicleTable.insertRow();
+            row.innerHTML = `
+                <td>${vehiculo.id}</td>
+                <td>${vehiculo.placa}</td>
+                <td>${vehiculo.estacionamiento}</td>
+                <td>${vehiculo.fecha_hora}</td>
+                <td><span class="vehicle-status">${vehiculo.estado}</span></td>
+                <td><button onclick="imprimirInformacion(${vehiculo.id})">Imprimir</button></td>
+            `;
+        });
+        displayPage(1);
+    })
+    .catch((error) => {
+        console.error('Error al obtener vehículos:', error);
+    });
+}   
+
 function addVehicle(event) {
+    console.log("addVehicle function called");
     event.preventDefault();
 
+    // Recoger datos del formulario
     const placa = document.getElementById('placa').value;
     const tipo = document.getElementById('tipo').value;
     const estacionamiento = document.getElementById('numero-estacionamiento').value;
     const precio = document.getElementById('precio').value;
     const fechaHora = new Date().toISOString().slice(0, 19).replace('T', ' ');
     const estado = "Estacionado";
+
+    console.log("Datos recogidos:", { placa, tipo, estacionamiento, precio, fechaHora, estado });
 
     // Crear objeto con los datos del vehículo
     const vehicleData = {
@@ -30,7 +58,7 @@ function addVehicle(event) {
         fechaHora,
         estado
     };
-
+    console.log("Sending data:", JSON.stringify(vehicleData));
     // Enviar datos al servidor
     fetch('agregar_vehiculo.php', {
         method: 'POST',
@@ -39,47 +67,32 @@ function addVehicle(event) {
         },
         body: JSON.stringify(vehicleData),
     })
-    .then(response => response.json())
-    .then(data => {
-        if (data.success) {
-            // Actualizar la tabla en el frontend
-            actualizarTablaVehiculos();
-        } else {
-            console.error('Error al agregar vehículo:', data.error);
+    .then(response => {
+        console.log("Respuesta en bruto:", response);
+        return response.text();  // Cambiado de response.json() a response.text()
+    })
+    .then(text => {
+        console.log("Texto de la respuesta:", text);
+        try {
+            const data = JSON.parse(text);
+            if (data.success) {
+                console.log("Vehículo agregado con éxito");
+                actualizarTablaVehiculos();
+            } else {
+                console.error('Error al agregar vehículo:', data.error);
+            }
+        } catch (e) {
+            console.error('Error al parsear la respuesta JSON:', e);
         }
     })
     .catch((error) => {
-        console.error('Error:', error);
+        console.error('Error en fetch:', error);
     });
-
     // Limpiar el formulario
     document.getElementById('placa').value = '';
     document.getElementById('tipo').value = 'Seleccione-tipo';
     document.getElementById('numero-estacionamiento').value = 'Seleccione-tipo';
     document.getElementById('precio').value = 'Seleccione-precio';
-}
-
-function actualizarTablaVehiculos() {
-    fetch('obtener_vehiculos.php')
-    .then(response => response.json())
-    .then(data => {
-        // Actualizar la tabla con los datos recibidos
-        const vehicleTable = document.querySelector("#vehicle-table tbody");
-        vehicleTable.innerHTML = '';
-        data.forEach((vehiculo, index) => {
-            const row = vehicleTable.insertRow();
-            row.insertCell(0).innerText = index + 1;
-            row.insertCell(1).innerText = vehiculo.placa;
-            row.insertCell(2).innerText = vehiculo.estacionamiento;
-            row.insertCell(3).innerText = vehiculo.fecha_hora;
-            row.insertCell(4).innerHTML = `<span class="vehicle-status">${vehiculo.estado}</span>`;
-            // Agregar botón de imprimir aquí si es necesario
-        });
-        displayPage(1);
-    })
-    .catch((error) => {
-        console.error('Error:', error);
-    });
 }
 
 // Función para mostrar una página específica
@@ -166,4 +179,10 @@ function searchTable() {
 
         rows[i].style.display = match ? '' : 'none';
     }
+}
+
+function imprimirInformacion(id) {
+    // Aquí puedes implementar la lógica para imprimir la información
+    // Por ejemplo, podrías abrir una nueva ventana con los detalles del vehículo
+    window.open(`imprimir_vehiculo.php?id=${id}`, '_blank');
 }

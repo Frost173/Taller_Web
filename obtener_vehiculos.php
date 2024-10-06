@@ -2,13 +2,8 @@
 header('Content-Type: application/json');
 
 $config = include 'config.php';
-$conn = new mysqli($server, $user, $pass, $db);
 
-if ($conn->connect_error) {
-    die(json_encode(['success' => false, 'error' => 'Conexion fallida: ' . $conn->connect_error]));
-}
-
-$result = $conn->query("SELECT * FROM vehiculos WHERE fecha_salida IS NULL ORDER BY fecha_hora DESC");
+$result = $conn->query("SELECT id, placa, estacionamiento, fecha_hora, estado FROM entrada WHERE fecha_salida IS NULL ORDER BY fecha_hora DESC");
 
 $vehiculos = [];
 while($row = $result->fetch_assoc()) {
