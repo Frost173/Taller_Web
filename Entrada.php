@@ -10,7 +10,7 @@ $config = include 'config.php';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Salidas - Panel S PMS</title>
+    <title>Entrada - Panel S PMS</title>
     <link rel="stylesheet" href="stylesEntrada.css">
     <script src="scriptEntrada.js"></script>
 </head>
@@ -35,8 +35,8 @@ $config = include 'config.php';
             <ul>
                 <li><a href="index.html">Inicio</a></li>
                 <li><a href="Categoria.html">Categoría</a></li>
-                <li><a href="Entrada.html" class="active">Entradas</a></li>
-                <li><a href="Salidas.html">Salidas</a></li>
+                <li><a href="http://localhost/sistema_aparcamiento/Entrada.php" class="active">Entradas</a></li>
+                <li><a href="http://localhost/sistema_aparcamiento/Salida.php">Salidas</a></li>
                 <li><a href="#">Informes</a></li>
                 <li><a href="#">Buscar</a></li>
                 <li><a href="#">Ajustes</a></li>
@@ -49,41 +49,41 @@ $config = include 'config.php';
             <div class="top-panels">
                 <div class="vehicle-panel">
                     <h3>Agregar Vehículo</h3>
-                    <form>
+                    <form id="addVehicleForm" onsubmit="addVehicle(event)">
                         <label for="placa">Placa</label>
                         <input type="text" id="placa" value="">
 
                         <label for="tipo">Tipo</label>
                         <select id="tipo">
-                            <option value="">Seleccione Tipo</option>
-                            <option value="">Auto</option>
-                            <option value="">Motocicleta</option>
-                            <option value="">Mini Furgoneta</option>
-                            <option value="">Furgoneta de recogida</option>
-                            <option value="">Microbus</option>
-                            <option value="">Camión</option>
+                        <option value="">Seleccione Tipo</option>
+                        <option value="Auto">Auto</option>
+                        <option value="Motocicleta">Motocicleta</option>
+                        <option value="Mini Furgoneta">Mini Furgoneta</option>
+                        <option value="Camioneta">Camioneta</option>
+                        <option value="Minibus">Minibus</option>
+                        <option value="Camión">Camión</option>
                         </select>
 
                         <label for="numero-estacionamiento">Número de estacionamiento</label>
                         <select id="numero-estacionamiento">
                             <option value="">Seleccione aparcamiento</option>
-                            <option value="">2 → (Coche)</option>
-                            <option value="">6 → (Motocicleta)</option>
-                            <option value="">2 → (Mini Furgoneta)</option>
-                            <option value="">7 → (Camioneta)</option>
-                            <option value="">9 → (Minibus)</option>
-                            <option value="">20 → (Camion)</option>
+                            <option value="2">2 → (Coche)</option>
+                            <option value="6">6 → (Motocicleta)</option>
+                            <option value="2">2 → (Mini Furgoneta)</option>
+                            <option value="7">7 → (Camioneta)</option>
+                            <option value="9">9 → (Minibus)</option>
+                            <option value="20">20 → (Camión)</option>
                         </select>
 
                         <label for="precio">Precio</label>
                         <select id="precio">
                             <option value="">Seleccione precio</option>
-                            <option value="">$4 → (Coche)</option>
-                            <option value="">$2 → (Motocicleta)</option>
-                            <option value="">$5 → (Mini Furgoneta)</option>
-                            <option value="">$5 → (Camioneta de recogida)</option>
-                            <option value="">$6 → (Minibús)</option>
-                            <option value="">$20 → (Camión)</option>
+                            <option value="4">$4 → (Coche)</option>
+                            <option value="2">$2 → (Motocicleta)</option>
+                            <option value="5">$5 → (Mini Furgoneta)</option>
+                            <option value="5">$5 → (Camioneta)</option>
+                            <option value="6">$6 → (Minibús)</option>
+                            <option value="20">$20 → (Camión)</option>
                         </select>
 
                         <button type="submit" class="add-vehicle">Agregar Vehículo</button>
@@ -133,7 +133,7 @@ $config = include 'config.php';
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>Número de vehículo</th>
+                            <th>Placa</th>
                             <th>Número de área</th>
                             <th>Hora de llegada</th>
                             <th>Estado</th>

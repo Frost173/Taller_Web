@@ -1,0 +1,149 @@
+/* Estilos generales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Contenedor principal */
+.container {
+    padding: 20px;
+    background-color: #f5f5f5;
+}
+
+/* Encabezado */
+header {
+    margin-bottom: 20px;
+}
+
+header h1 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.info-text {
+    color: #666;
+    font-size: 14px;
+}
+
+/* Controles superiores */
+.controls {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.entries-control select {
+    margin: 0 10px;
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.search-control input {
+    padding: 5px 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    width: 200px;
+}
+
+/* Tabla de vehículos */
+.vehicles-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
+
+.vehicles-table th,
+.vehicles-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.vehicles-table th {
+    background-color: #f8f9fa;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Estados de vehículos */
+.status {
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 12px;
+}
+
+.status.cubierto-de-hojas {
+    background-color: #28a745;
+    color: white;
+}
+
+.status.estacionado {
+    background-color: #007bff;
+    color: white;
+}
+
+/* Botones de acción */
+.action-btn {
+    padding: 5px 15px;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+}
+
+.action-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Paginación */
+.pagination {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+}
+
+.pagination-controls {
+    display: flex;
+    gap: 5px;
+}
+
+.pagination-btn {
+    padding: 5px 10px;
+    border: 1px solid #ddd;
+    background-color: white;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.pagination-btn.active {
+    background-color: #007bff;
+    color: white;
+    border-color: #007bff;
+}
+
+.pagination-btn:disabled {
+    background-color: #f5f5f5;
+    cursor: not-allowed;
+    color: #666;
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+    .controls {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .vehicles-table {
+        display: block;
+        overflow-x: auto;
+    }
+}

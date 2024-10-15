@@ -2,6 +2,7 @@ let currentPage = 1;
 let rowsPerPage = 5;
 
 document.addEventListener('DOMContentLoaded', function() {
+    actualizarTablaVehiculos();// Llamar a esta función cuando se carga la página
     const form = document.querySelector('form');
     if (form) {
         form.addEventListener('submit', addVehicle);
@@ -17,17 +18,21 @@ function actualizarTablaVehiculos() {
     .then(data => {
         const vehicleTable = document.querySelector("#vehicle-table tbody");
         vehicleTable.innerHTML = '';
-        data.forEach((vehiculo, index) => {
-            const row = vehicleTable.insertRow();
-            row.innerHTML = `
-                <td>${vehiculo.id}</td>
-                <td>${vehiculo.placa}</td>
-                <td>${vehiculo.estacionamiento}</td>
-                <td>${vehiculo.fecha_hora}</td>
-                <td><span class="vehicle-status">${vehiculo.estado}</span></td>
-                <td><button onclick="imprimirInformacion(${vehiculo.id})">Imprimir</button></td>
-            `;
-        });
+        if (data.length === 0) {
+            vehicleTable.innerHTML = '<tr><td colspan="6">No hay datos disponibles en la tabla</td></tr>';
+        } else {
+            data.forEach((vehiculo, index) => {
+                const row = vehicleTable.insertRow();
+                row.innerHTML = `
+                    <td>${vehiculo.id}</td>
+                    <td>${vehiculo.placa}</td>
+                    <td>${vehiculo.estacionamiento}</td>
+                    <td>${vehiculo.fecha_hora}</td>
+                    <td><span class="vehicle-status">${vehiculo.estado}</span></td>
+                    <td><button onclick="imprimirInformacion(${vehiculo.id})">Imprimir</button></td>
+                `;
+            });
+        }
         displayPage(1);
     })
     .catch((error) => {
@@ -36,16 +41,23 @@ function actualizarTablaVehiculos() {
 }   
 
 function addVehicle(event) {
-    console.log("addVehicle function called");
     event.preventDefault();
+    console.log("addVehicle function called");
 
     // Recoger datos del formulario
-    const placa = document.getElementById('placa').value;
+    const placa = document.getElementById('placa').value.trim();
     const tipo = document.getElementById('tipo').value;
     const estacionamiento = document.getElementById('numero-estacionamiento').value;
     const precio = document.getElementById('precio').value;
     const fechaHora = new Date().toISOString().slice(0, 19).replace('T', ' ');
     const estado = "Estacionado";
+
+    // Validar que todos los campos estén llenos
+    if (!placa || !tipo || !estacionamiento || !precio) {
+        alert("Por favor, complete todos los campos.");
+        console.error("Campos incompletos:", { placa, tipo, estacionamiento, precio });
+        return;
+    }
 
     console.log("Datos recogidos:", { placa, tipo, estacionamiento, precio, fechaHora, estado });
 
@@ -58,7 +70,9 @@ function addVehicle(event) {
         fechaHora,
         estado
     };
+
     console.log("Sending data:", JSON.stringify(vehicleData));
+
     // Enviar datos al servidor
     fetch('agregar_vehiculo.php', {
         method: 'POST',
@@ -67,32 +81,23 @@ function addVehicle(event) {
         },
         body: JSON.stringify(vehicleData),
     })
-    .then(response => {
-        console.log("Respuesta en bruto:", response);
-        return response.text();  // Cambiado de response.json() a response.text()
-    })
-    .then(text => {
-        console.log("Texto de la respuesta:", text);
-        try {
-            const data = JSON.parse(text);
-            if (data.success) {
-                console.log("Vehículo agregado con éxito");
-                actualizarTablaVehiculos();
-            } else {
-                console.error('Error al agregar vehículo:', data.error);
-            }
-        } catch (e) {
-            console.error('Error al parsear la respuesta JSON:', e);
+    .then(response => response.json())
+    .then(data => {
+        console.log("Respuesta del servidor:", data);
+        if (data.success) {
+            console.log("Vehículo agregado con éxito");
+            alert("Vehículo agregado correctamente");
+            actualizarTablaVehiculos();
+            document.getElementById('addVehicleForm').reset();
+        } else {
+            console.error('Error al agregar vehículo:', data.error);
+            alert("Error al agregar vehículo: " + data.error);
         }
     })
     .catch((error) => {
         console.error('Error en fetch:', error);
+        alert("Error de conexión al agregar vehículo");
     });
-    // Limpiar el formulario
-    document.getElementById('placa').value = '';
-    document.getElementById('tipo').value = 'Seleccione-tipo';
-    document.getElementById('numero-estacionamiento').value = 'Seleccione-tipo';
-    document.getElementById('precio').value = 'Seleccione-precio';
 }
 
 // Función para mostrar una página específica
