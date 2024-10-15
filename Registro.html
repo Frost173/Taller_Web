@@ -11,13 +11,12 @@
 <div class="container">
     <div class="form-container">
         <h2>Regístrate</h2>
-        <form action="Sesion.html" method="post" action="registro.php">
-            <input type="text" placeholder="Nombre" required>
-            <input type="text" placeholder="Apellidos" required>
-            <input type="date" placeholder="Fecha de Nacimiento" required>
-            <input type="email" placeholder="Correo Electrónico" required>
-            <input type="password" placeholder="Contraseña" required>
-            <input type="password" placeholder="Confirmar Contraseña" required>
+        <form method="post" action="registro.php">
+            <input type="text" name="nombre" placeholder="Nombre" required>
+            <input type="text" name="apellidos" placeholder="Apellidos" required>
+            <input type="date" name="fecha_nacimiento" placeholder="Fecha de Nacimiento" required>
+            <input type="email" name="correo" placeholder="Correo Electrónico" required>
+            <input type="password" name="contrasena" placeholder="Contraseña" required>
             <button type="submit">Registrarse</button>
         </form>
     </div>
@@ -33,6 +32,5 @@
     </div>
     
 </div>
-
 </body>
 </html>

@@ -1,29 +1,38 @@
 <?php
-session_start();
-require 'conexion.php'; // Incluye el archivo de conexión
+// Incluir el archivo de conexión
+include 'conexion.php';
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+// Verificar que los datos han sido enviados
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Obtener los datos del formulario
     $correo = $_POST['correo'];
-    $contraseña = $_POST['contraseña'];
+    $contrasena = $_POST['contrasena'];
 
-    // Verificar las credenciales del usuario
-    $sql = "SELECT * FROM usuarios WHERE correo='$correo'";
+    // Preparar la consulta para verificar el usuario
+    $sql = "SELECT contrasena FROM usuarios WHERE correo = '$correo'";
     $result = $conn->query($sql);
 
     if ($result->num_rows > 0) {
+        // Obtener la contraseña encriptada de la base de datos
         $row = $result->fetch_assoc();
-        
+        $hashed_password = $row['contrasena'];
+
         // Verificar la contraseña
-        if (password_verify($contraseña, $row['contraseña'])) {
-            $_SESSION['usuario_id'] = $row['id']; // Guardar ID del usuario en sesión
-            header("Location: inicio.php"); // Redirigir a una página protegida
+        if (password_verify($contrasena, $hashed_password)) {
+           
+            header("Location: index.html");
             exit();
         } else {
-            echo "Contraseña incorrecta.";
+            
+            header("Location: Sesion.html?error=contrasena");
+            exit();
         }
     } else {
-        echo "No se encontró ningún usuario con ese correo.";
+        header("Location: Sesion.html?error=correo");
+        exit();
     }
+
+    // Cerrar la conexión
+    $conn->close();
 }
-$conn->close();
 ?>
