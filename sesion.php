@@ -1,38 +1,36 @@
 <?php
-// Incluir el archivo de conexión
+// Incluimos la configuración de la base de datos
 include 'config.php';
 
-// Verificar que los datos han sido enviados
+// Iniciamos la sesión
+session_start();
+
+// Verificamos si el formulario ha sido enviado
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Obtener los datos del formulario
+    // Obtenemos los datos del formulario
     $correo = $_POST['correo'];
     $contrasena = $_POST['contrasena'];
 
-    // Preparar la consulta para verificar el usuario
-    $sql = "SELECT contrasena FROM usuarios WHERE correo = '$correo'";
-    $result = $conn->query($sql);
+    // Preparamos la consulta SQL para verificar el usuario
+    $sql = "SELECT * FROM usuarios WHERE correo = ? AND contrasena = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("ss", $correo, $contrasena);
+    $stmt->execute();
+    $result = $stmt->get_result();
 
+    // Verificamos si se encontró el usuario
     if ($result->num_rows > 0) {
-        // Obtener la contraseña encriptada de la base de datos
-        $row = $result->fetch_assoc();
-        $hashed_password = $row['contrasena'];
-
-        // Verificar la contraseña
-        if (password_verify($contrasena, $hashed_password)) {
-           
-            header("Location: index.html");
-            exit();
-        } else {
-            
-            header("Location: Sesion.html?error=contrasena");
-            exit();
-        }
-    } else {
-        header("Location: Sesion.html?error=correo");
+        // Usuario autenticado, redirigimos a index.html
+        header("Location: index.html");
         exit();
+    } else {
+        // Credenciales incorrectas, mensaje de error
+        echo "<script>alert('Correo o contraseña incorrectos');</script>";
+        echo "<script>window.location.href = 'Sesion.html';</script>";
     }
 
-    // Cerrar la conexión
+    // Cerramos la consulta y la conexión
+    $stmt->close();
     $conn->close();
 }
 ?>
