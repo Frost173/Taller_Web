@@ -1,48 +1,119 @@
 let currentPage = 1;
 let rowsPerPage = 5;
+let isSubmitting = false;
 
+// Un solo event listener para DOMContentLoaded
 document.addEventListener('DOMContentLoaded', function() {
-    actualizarTablaVehiculos();// Llamar a esta función cuando se carga la página
+    initializeApp();
+});
+
+function initializeApp() {
+    actualizarTablaVehiculos();
+    
+    // Inicializar el formulario
     const form = document.querySelector('form');
     if (form) {
         form.addEventListener('submit', addVehicle);
     } else {
         console.error('El formulario no se encontró en el DOM');
     }
-    displayPage(currentPage);
-});
+    
+    // Inicializar la paginación
+    const entriesSelect = document.getElementById('entries');
+    if (entriesSelect) {
+        entriesSelect.addEventListener('change', changeEntries);
+    }
+    
+    // Inicializar la búsqueda
+    const searchInput = document.getElementById('search-input');
+    if (searchInput) {
+        searchInput.addEventListener('input', searchTable);
+    }
+}
 
 function actualizarTablaVehiculos() {
+    console.log("Actualizando tabla de vehículos...");
+
     fetch('obtener_vehiculos.php')
-    .then(response => response.json())
-    .then(data => {
-        const vehicleTable = document.querySelector("#vehicle-table tbody");
-        vehicleTable.innerHTML = '';
-        if (data.length === 0) {
-            vehicleTable.innerHTML = '<tr><td colspan="6">No hay datos disponibles en la tabla</td></tr>';
-        } else {
-            data.forEach((vehiculo, index) => {
-                const row = vehicleTable.insertRow();
-                row.innerHTML = `
-                    <td>${vehiculo.id}</td>
-                    <td>${vehiculo.placa}</td>
-                    <td>${vehiculo.estacionamiento}</td>
-                    <td>${vehiculo.fecha_hora}</td>
-                    <td><span class="vehicle-status">${vehiculo.estado}</span></td>
-                    <td><button onclick="imprimirInformacion(${vehiculo.id})">Imprimir</button></td>
-                `;
-            });
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
         }
+        return response.json();
+    })
+    .then(response => {
+        if (!response.success) {
+            throw new Error(response.error || 'Error desconocido');
+        }
+
+        const data = response.data;
+        console.log("Datos recibidos:", data);
+
+        const vehicleTable = document.querySelector("#vehicle-table tbody");
+        if (!vehicleTable) {
+            console.error("No se encontró la tabla de vehículos");
+            return;
+        }
+
+        // Limpiar la tabla
+        vehicleTable.innerHTML = '';
+
+        if (!Array.isArray(data) || data.length === 0) {
+            vehicleTable.innerHTML = '<tr><td colspan="6" class="text-center">No hay vehículos registrados</td></tr>';
+            return;
+        }
+
+        // Agregar los nuevos datos
+        data.forEach(vehiculo => {
+            const row = vehicleTable.insertRow();
+            row.innerHTML = `
+                <td>${vehiculo.id || ''}</td>
+                <td>${vehiculo.placa || ''}</td>
+                <td>${vehiculo.estacionamiento || ''}</td>
+                <td>${vehiculo.fecha_hora || ''}</td>
+                <td><span class="vehicle-status">${vehiculo.estado || ''}</span></td>
+                <td>
+                    <button onclick="imprimirInformacion(${vehiculo.id})" 
+                            class="print-btn">
+                        Imprimir
+                    </button>
+                </td>
+            `;
+        });
+
+        // Actualizar la paginación
         displayPage(1);
     })
-    .catch((error) => {
-        console.error('Error al obtener vehículos:', error);
+    .catch(error => {
+        console.error('Error al actualizar la tabla:', error);
+        const vehicleTable = document.querySelector("#vehicle-table tbody");
+        if (vehicleTable) {
+            vehicleTable.innerHTML = '<tr><td colspan="6" class="text-center">Error al cargar los datos</td></tr>';
+        }
     });
-}   
+}
 
 function addVehicle(event) {
     event.preventDefault();
-    console.log("addVehicle function called");
+    console.log("El comportamiento por defecto ha sido prevenido");
+
+    // Evitar múltiples envíos
+    if (isSubmitting) {
+        return;
+    }
+
+    isSubmitting = true;
+    
+    // Obtener el formulario y el botón de envío
+    const form = document.getElementById('addVehicleForm');
+    const submitButton = form.querySelector('button[type="submit"]') || 
+                        form.querySelector('input[type="submit"]') ||
+                        document.querySelector('#addVehicleForm button');
+    // Deshabilitar el botón si existe
+    if (submitButton) {
+        submitButton.disabled = true;
+    }
+    
 
     // Recoger datos del formulario
     const placa = document.getElementById('placa').value.trim();
@@ -71,7 +142,7 @@ function addVehicle(event) {
         estado
     };
 
-    console.log("Sending data:", JSON.stringify(vehicleData));
+    console.log("Enviando datos:", vehicleData);
 
     // Enviar datos al servidor
     fetch('agregar_vehiculo.php', {
@@ -83,20 +154,27 @@ function addVehicle(event) {
     })
     .then(response => response.json())
     .then(data => {
-        console.log("Respuesta del servidor:", data);
         if (data.success) {
-            console.log("Vehículo agregado con éxito");
             alert("Vehículo agregado correctamente");
-            actualizarTablaVehiculos();
-            document.getElementById('addVehicleForm').reset();
+            form.reset();
+            // Esperamos un momento antes de actualizar la tabla
+            setTimeout(actualizarTablaVehiculos, 100);
+        } else if (data.error && data.error.includes('Duplicate entry')) {
+            // Si es un error de duplicado, mostramos un mensaje más amigable
+            alert("Este vehículo ya está registrado para hoy");
         } else {
-            console.error('Error al agregar vehículo:', data.error);
-            alert("Error al agregar vehículo: " + data.error);
+            alert("Error al agregar vehículo");
         }
     })
     .catch((error) => {
         console.error('Error en fetch:', error);
         alert("Error de conexión al agregar vehículo");
+    })
+    .finally(() => {
+        isSubmitting = false;
+        if (submitButton) {
+            submitButton.disabled = false;
+        }
     });
 }
 
@@ -113,21 +191,23 @@ function displayPage(page) {
     console.log("Mostrando filas desde", start, "hasta", end);
 
     rows.forEach((row, index) => {
-        if (index >= start && index < end) {
-            row.style.display = '';
-        } else {
-            row.style.display = 'none';
-        }
+        row.style.display = (index >= start && index < end) ? '' : 'none';
     });
 
-    // Actualiza el estado de la paginación
+    currentPage = page;
+    updatePaginationControls(totalRows);    
+}
+    // Habilitar/deshabilitar botones de paginación según corresponda
+function updatePaginationControls(totalRows) {
     const totalPages = Math.ceil(totalRows / rowsPerPage);
+    
+    // Actualizar el texto de la paginación
     const paginationSpan = document.querySelector('.table-pagination span');
     if (paginationSpan) {
         paginationSpan.innerText = `Página ${currentPage} de ${totalPages}`;
     }
     
-    // Habilitar/deshabilitar botones de paginación según corresponda
+    // Actualizar estado de los botones
     const prevButton = document.querySelector('.table-pagination button:first-child');
     const nextButton = document.querySelector('.table-pagination button:last-child');
     if (prevButton) prevButton.disabled = (currentPage === 1);
@@ -140,11 +220,6 @@ function changeEntries() {
     currentPage = 1; // Resetear a la primera página
     displayPage(currentPage);
 }
-
-// Asegurarse de que displayPage se llame cuando la página se carga
-document.addEventListener('DOMContentLoaded', function() {
-    displayPage(currentPage);
-});
 
 // Función para ir a la página siguiente
 function nextPage() {
@@ -160,8 +235,7 @@ function nextPage() {
 // Función para ir a la página anterior
 function previousPage() {
     if (currentPage > 1) {
-        currentPage--;
-        displayPage(currentPage);
+        displayPage(currentPage - 1);
     }
 }
 
@@ -184,6 +258,10 @@ function searchTable() {
 
         rows[i].style.display = match ? '' : 'none';
     }
+
+    // Resetear la paginación cuando se realiza una búsqueda
+    currentPage = 1;
+    displayPage(currentPage);
 }
 
 function imprimirInformacion(id) {
