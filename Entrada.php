@@ -1,9 +1,3 @@
-<?php
-// Incluir el archivo de configuració
-$config = include 'config.php';
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,11 +5,16 @@ $config = include 'config.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Entrada - Panel S PMS</title>
-    <link rel="stylesheet" href="stylesEntrada.css">
+    <link rel="stylesheet" href="stylesEntrada.css">    
+    <link rel="stylesheet" href="styles.css">
     <script src="scriptEntrada.js"></script>
 </head>
 
 <body>
+    <!-- Alternador de Menú Móvil -->
+    <div class="mobile-menu-toggle">
+        <img src="imagenes/Menu.png" alt="Menú" class="menu-icon">
+    </div>
     <!-- Header -->
     <header class="main-header">
         <div class="logo">
@@ -24,7 +23,6 @@ $config = include 'config.php';
         </div>
         <div class="user-info">
             <span>Bienvenido, Administrador</span>
-            <button class="logout">Salir</button>
         </div>
     </header>
 
@@ -33,14 +31,13 @@ $config = include 'config.php';
         <!-- Sidebar -->
         <nav class="sidebar">
             <ul>
-                <li><a href="index.html">Inicio</a></li>
-                <li><a href="Categoria.html">Categoría</a></li>
-                <li><a href="http://localhost/sistema_aparcamiento/Entrada.php" class="active">Entradas</a></li>
+                <li><a href="http://localhost/sistema_aparcamiento/Index.php">Inicio</a></li>
+                <li><a href="http://localhost/sistema_aparcamiento/Categoria.php">Categoría</a></li>
+                <li><a href="http://localhost/sistema_aparcamiento/Entrada.php" >Entradas</a></li>
                 <li><a href="http://localhost/sistema_aparcamiento/Salida.php">Salidas</a></li>
-                <li><a href="#">Informes</a></li>
-                <li><a href="#">Buscar</a></li>
-                <li><a href="#">Ajustes</a></li>
-                <li><a href="#">Cerrar sesión</a></li>
+                <li><a href="http://localhost/sistema_aparcamiento/Reportes.php">Reportes</a></li>
+                <li><a href="http://localhost/sistema_aparcamiento/Buscar.php">Buscar</a></li>
+                <li><a href="http://localhost/sistema_aparcamiento/Ajuste.php">Ajustes</a></li>
             </ul>
         </nav>
 
@@ -52,89 +49,50 @@ $config = include 'config.php';
                     <form id="addVehicleForm" onsubmit="addVehicle(event)">
                         <label for="placa">Placa</label>
                         <input type="text" id="placa" value="">
-
                         <label for="tipo">Tipo</label>
                         <select id="tipo">
-                        <option value="">Seleccione Tipo</option>
-                        <option value="Auto">Auto</option>
-                        <option value="Motocicleta">Motocicleta</option>
-                        <option value="Mini Furgoneta">Mini Furgoneta</option>
-                        <option value="Camioneta">Camioneta</option>
-                        <option value="Minibus">Minibus</option>
-                        <option value="Camión">Camión</option>
+                        <option value="">Seleccione Tipo</option>                        
                         </select>
-
-                        <label for="numero-estacionamiento">Número de estacionamiento</label>
-                        <select id="numero-estacionamiento">
-                            <option value="">Seleccione aparcamiento</option>
-                            <option value="2">2 → (Coche)</option>
-                            <option value="6">6 → (Motocicleta)</option>
-                            <option value="2">2 → (Mini Furgoneta)</option>
-                            <option value="7">7 → (Camioneta)</option>
-                            <option value="9">9 → (Minibus)</option>
-                            <option value="20">20 → (Camión)</option>
-                        </select>
-
                         <label for="precio">Precio</label>
                         <select id="precio">
-                            <option value="">Seleccione precio</option>
-                            <option value="4">$4 → (Coche)</option>
-                            <option value="2">$2 → (Motocicleta)</option>
-                            <option value="5">$5 → (Mini Furgoneta)</option>
-                            <option value="5">$5 → (Camioneta)</option>
-                            <option value="6">$6 → (Minibús)</option>
-                            <option value="20">$20 → (Camión)</option>
+                            <option value="">Seleccione precio</option>                            
                         </select>
-
                         <button type="submit" class="add-vehicle">Agregar Vehículo</button>
                     </form>
                 </div>
 
-
-                <div class="vehicle-limits">
-                    <h3>Límite de Vehículos</h3>
-                    <ul>
-                        <li>
-                             <span class="vehicle-type">Limite de Coches:</span><span><span class="current-count">18</span> de 18</span>
-                        </li>
-                        <li>
-                            <span class="vehicle-type">Limite de Motocicletas:</span><span><span class="current-count">26</span> de 26</span>
-                        </li>
-                        <li>
-                            <span class="vehicle-type">Limite de Mini Van:</span><span><span class="current-count">8</span> de 8</span>
-                        </li>
-                        <li>
-                            <span class="vehicle-type">Limite de Furgonetas:</span><span><span class="current-count">11</span> de 11</span>
-                        </li>
-                        <li>
-                            <span class="vehicle-type">Limite de Minibús:</span><span><span class="current-count">6</span> de 6</span>
-                        </li>
-                        <li>
-                            <span class="vehicle-type">Limite de Camión:</span><span><span class="current-count">10</span> de 10</span>
-                        </li>
-                    </ul>
-                </div>
             </div>
             <div class="vehicle-list">
                 <h3>Vehículos Actuales</h3>
                 <div class="table-controls">
-                    <label for="entries">Mostrar </label>
-                    <select id="entries" onchange="changeEntries()">
-                        <option value="5">5</option>
-                        <option value="10">10</option>
-                        <option value="15">15</option>
-                        <option value="20">20</option>
-                    </select>
-                    entradas
-                    <label for="search-input">Buscar: </label>
-                    <input type="text" id="search-input" onkeyup="searchTable()" placeholder="Buscar vehículo...">
+                    <div class="entries-section">
+                        <label for="entries">Mostrar </label>
+                        <select id="entries" onchange="changeEntries()">
+                            <option value="5">5</option>
+                            <option value="10">10</option>
+                            <option value="15">15</option>
+                            <option value="20">20</option>
+                        </select>
+                        <span>entradas</span>
+                    </div>
+    
+                    <div class="search-section">
+                            <label for="search-input">Buscar: </label>
+                        <input 
+                            type="text" 
+                            id="search-input" 
+                            onkeyup="searchTable()" 
+                            placeholder="Buscar por ID, placa, fecha, hora o estado..."
+                            class="form-control">
+                        <div id="search-results" style="display: none; margin-top: 10px; color: #666; font-style: italic;"></div>
+                    </div>
                 </div>
                 <table id="vehicle-table">
                     <thead>
                         <tr>
                             <th>#</th>
                             <th>Placa</th>
-                            <th>Número de área</th>
+                            <th>Día de llegada</th>
                             <th>Hora de llegada</th>
                             <th>Estado</th>
                             <th>Acción</th>

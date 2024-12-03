@@ -21,36 +21,31 @@ $config = [
 $conn = null;  // Inicializar conn como null en caso de error
 
 try {
-    // Crear conexión MySQLi
-    $conn = new mysqli(
-        $config['database']['host'],
+    // Crear conexión PDO
+    $dsn = "mysql:host={$config['database']['host']};port={$config['database']['port']};dbname={$config['database']['name']};charset=utf8mb4";
+    
+    $conn = new PDO(
+        $dsn,
         $config['database']['user'],
         $config['database']['password'],
-        $config['database']['name'],
-        $config['database']['port']
+        [
+            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+            PDO::ATTR_EMULATE_PREPARES => false
+        ]
     );
 
-    // Verificar conexión
-    if ($conn->connect_error) {
-        file_put_contents('debug.log', "Error de conexión a la base de datos: " . $conn->connect_error . "\n", FILE_APPEND);
-        throw new Exception("Error de conexión: " . $conn->connect_error);
-    } else {
-        file_put_contents('debug.log', "Conexión a la base de datos establecida con éxito\n", FILE_APPEND);
-    }
+    file_put_contents('debug.log', "Conexión a la base de datos establecida con éxito\n", FILE_APPEND);
 
-    // Establecer charset
-    $conn->set_charset("utf8mb4");
-
-} catch (Exception $e) {
+} catch (PDOException $e) {
     // Log del error
     error_log("Error en config.php: " . $e->getMessage());
+    file_put_contents('debug.log', "Error de conexión a la base de datos: " . $e->getMessage() . "\n", FILE_APPEND);
     
     // Si estamos en modo debug, mostrar error detallado
     if ($config['app']['debug']) {
-        throw new Exception("Error de conexión a la base de datos: " . $e->getMessage());
+        throw new PDOException("Error de conexión a la base de datos: " . $e->getMessage());
     }
-    
-    // En producción, retornar error genérico
 }
 
 // Siempre retornar el array con las claves 'config' y 'conn'

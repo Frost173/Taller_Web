@@ -1,0 +1,479 @@
+[03-Oct-2024 19:36:38 Europe/Berlin] PHP Warning:  Undefined variable $conn in D:\xampp\htdocs\sistema_aparcamiento\agregar_vehiculo.php on line 28
+[03-Oct-2024 19:36:38 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in D:\xampp\htdocs\sistema_aparcamiento\agregar_vehiculo.php:28
+Stack trace:
+#0 {main}
+  thrown in D:\xampp\htdocs\sistema_aparcamiento\agregar_vehiculo.php on line 28
+[03-Oct-2024 19:39:25 Europe/Berlin] PHP Warning:  Undefined variable $conn in D:\xampp\htdocs\sistema_aparcamiento\agregar_vehiculo.php on line 28
+[03-Oct-2024 19:39:25 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in D:\xampp\htdocs\sistema_aparcamiento\agregar_vehiculo.php:28
+Stack trace:
+#0 {main}
+  thrown in D:\xampp\htdocs\sistema_aparcamiento\agregar_vehiculo.php on line 28
+[03-Oct-2024 19:48:00 Europe/Berlin] PHP Warning:  Undefined array key "config" in D:\xampp\htdocs\sistema_aparcamiento\agregar_vehiculo.php on line 17
+[03-Oct-2024 19:48:00 Europe/Berlin] PHP Warning:  Undefined array key "conn" in D:\xampp\htdocs\sistema_aparcamiento\agregar_vehiculo.php on line 18
+[03-Oct-2024 19:48:00 Europe/Berlin] Error de conexión a la base de datos en agregar_vehiculo.php
+[03-Oct-2024 19:49:42 Europe/Berlin] PHP Warning:  Undefined array key "config" in D:\xampp\htdocs\sistema_aparcamiento\agregar_vehiculo.php on line 17
+[03-Oct-2024 19:49:42 Europe/Berlin] PHP Warning:  Undefined array key "conn" in D:\xampp\htdocs\sistema_aparcamiento\agregar_vehiculo.php on line 18
+[03-Oct-2024 19:49:42 Europe/Berlin] Error de conexión a la base de datos en agregar_vehiculo.php
+[15-Oct-2024 08:17:12 Europe/Berlin] Datos incompletos en agregar_vehiculo.php: tipo, estacionamiento, precio
+[15-Oct-2024 08:21:53 Europe/Berlin] Datos incompletos en agregar_vehiculo.php: tipo, estacionamiento, precio
+[15-Oct-2024 08:32:13 Europe/Berlin] Datos incompletos en agregar_vehiculo.php: placa, tipo, estacionamiento, precio
+[15-Oct-2024 09:06:10 Europe/Berlin] Datos incompletos en agregar_vehiculo.php: placa, tipo, estacionamiento, precio
+[27-Oct-2024 01:48:17 Europe/Berlin] Exception in agregar_vehiculo.php: Duplicate entry 'hjkl-2024-10-26' for key 'unique_placa_fecha'
+[27-Oct-2024 01:50:10 Europe/Berlin] Exception in agregar_vehiculo.php: Duplicate entry 'bnm-2024-10-26' for key 'unique_placa_fecha'
+[27-Oct-2024 01:51:09 Europe/Berlin] Exception in agregar_vehiculo.php: Duplicate entry 'vbn-2024-10-26' for key 'unique_placa_fecha'
+[27-Oct-2024 01:51:54 Europe/Berlin] Exception in agregar_vehiculo.php: Duplicate entry 'iop-2024-10-26' for key 'unique_placa_fecha'
+[27-Oct-2024 01:54:34 Europe/Berlin] Exception in agregar_vehiculo.php: Duplicate entry 'bnm-2024-10-26' for key 'unique_placa_fecha'
+[27-Oct-2024 01:54:34 Europe/Berlin] Exception in agregar_vehiculo.php: Duplicate entry 'bnm-2024-10-26' for key 'unique_placa_fecha'
+[01-Nov-2024 23:35:14 Europe/Berlin] Error en obtener_vehiculos.php: Table 'sistema_aparcamiento.entrada' doesn't exist
+[01-Nov-2024 23:35:31 Europe/Berlin] Exception in agregar_vehiculo.php: Table 'sistema_aparcamiento.entrada' doesn't exist
+[01-Nov-2024 23:50:08 Europe/Berlin] Error en obtener_vehiculos.php: Table 'sistema_aparcamiento.entrada' doesn't exist
+[07-Nov-2024 05:13:37 Europe/Berlin] PHP Warning:  Undefined array key "fecha_salida" in D:\xampp\htdocs\sistema_aparcamiento\imprimir_ticket.php on line 132
+[07-Nov-2024 05:13:37 Europe/Berlin] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in D:\xampp\htdocs\sistema_aparcamiento\imprimir_ticket.php on line 132
+[07-Nov-2024 05:13:37 Europe/Berlin] PHP Warning:  Undefined array key "hora_salida" in D:\xampp\htdocs\sistema_aparcamiento\imprimir_ticket.php on line 137
+[07-Nov-2024 05:13:37 Europe/Berlin] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in D:\xampp\htdocs\sistema_aparcamiento\imprimir_ticket.php on line 137
+[09-Nov-2024 22:40:14 Europe/Berlin] PHP Warning:  Undefined property: PDO::$connect_error in D:\xampp\htdocs\sistema_aparcamiento\obtener_vehiculos.php on line 22
+[09-Nov-2024 22:40:14 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to undefined method PDOStatement::fetch_assoc() in D:\xampp\htdocs\sistema_aparcamiento\obtener_vehiculos.php:53
+Stack trace:
+#0 {main}
+  thrown in D:\xampp\htdocs\sistema_aparcamiento\obtener_vehiculos.php on line 53
+[09-Nov-2024 22:56:32 Europe/Berlin] PHP Warning:  Undefined property: PDO::$connect_error in D:\xampp\htdocs\sistema_aparcamiento\obtener_vehiculos.php on line 22
+[09-Nov-2024 22:56:32 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to undefined method PDOStatement::fetch_assoc() in D:\xampp\htdocs\sistema_aparcamiento\obtener_vehiculos.php:53
+Stack trace:
+#0 {main}
+  thrown in D:\xampp\htdocs\sistema_aparcamiento\obtener_vehiculos.php on line 53
+[09-Nov-2024 23:03:37 Europe/Berlin] PHP Warning:  Undefined property: PDO::$connect_error in D:\xampp\htdocs\sistema_aparcamiento\obtener_vehiculos.php on line 22
+[09-Nov-2024 23:03:37 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to undefined method PDOStatement::fetch_assoc() in D:\xampp\htdocs\sistema_aparcamiento\obtener_vehiculos.php:53
+Stack trace:
+#0 {main}
+  thrown in D:\xampp\htdocs\sistema_aparcamiento\obtener_vehiculos.php on line 53
+[09-Nov-2024 23:20:37 Europe/Berlin] PHP Warning:  Undefined property: PDO::$connect_error in D:\xampp\htdocs\sistema_aparcamiento\obtener_vehiculos.php on line 22
+[09-Nov-2024 23:20:37 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to undefined method PDOStatement::fetch_assoc() in D:\xampp\htdocs\sistema_aparcamiento\obtener_vehiculos.php:53
+Stack trace:
+#0 {main}
+  thrown in D:\xampp\htdocs\sistema_aparcamiento\obtener_vehiculos.php on line 53
+[09-Nov-2024 23:20:39 Europe/Berlin] PHP Warning:  Undefined property: PDO::$connect_error in D:\xampp\htdocs\sistema_aparcamiento\obtener_vehiculos.php on line 22
+[09-Nov-2024 23:20:39 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to undefined method PDOStatement::fetch_assoc() in D:\xampp\htdocs\sistema_aparcamiento\obtener_vehiculos.php:53
+Stack trace:
+#0 {main}
+  thrown in D:\xampp\htdocs\sistema_aparcamiento\obtener_vehiculos.php on line 53
+[09-Nov-2024 23:20:40 Europe/Berlin] PHP Warning:  Undefined property: PDO::$connect_error in D:\xampp\htdocs\sistema_aparcamiento\obtener_vehiculos.php on line 22
+[09-Nov-2024 23:20:40 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to undefined method PDOStatement::fetch_assoc() in D:\xampp\htdocs\sistema_aparcamiento\obtener_vehiculos.php:53
+Stack trace:
+#0 {main}
+  thrown in D:\xampp\htdocs\sistema_aparcamiento\obtener_vehiculos.php on line 53
+[09-Nov-2024 23:33:58 Europe/Berlin] PHP Warning:  Undefined property: PDO::$connect_error in D:\xampp\htdocs\sistema_aparcamiento\obtener_vehiculos.php on line 22
+[09-Nov-2024 23:33:58 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to undefined method PDOStatement::fetch_assoc() in D:\xampp\htdocs\sistema_aparcamiento\obtener_vehiculos.php:53
+Stack trace:
+#0 {main}
+  thrown in D:\xampp\htdocs\sistema_aparcamiento\obtener_vehiculos.php on line 53
+[12-Nov-2024 07:55:14 Europe/Berlin] PHP Warning:  Undefined property: PDO::$connect_error in D:\xampp\htdocs\sistema_aparcamiento\obtener_vehiculos.php on line 22
+[12-Nov-2024 07:55:14 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to undefined method PDOStatement::fetch_assoc() in D:\xampp\htdocs\sistema_aparcamiento\obtener_vehiculos.php:53
+Stack trace:
+#0 {main}
+  thrown in D:\xampp\htdocs\sistema_aparcamiento\obtener_vehiculos.php on line 53
+[12-Nov-2024 07:56:01 Europe/Berlin] PHP Warning:  Undefined property: PDO::$connect_error in D:\xampp\htdocs\sistema_aparcamiento\obtener_vehiculos.php on line 22
+[12-Nov-2024 07:56:01 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to undefined method PDOStatement::fetch_assoc() in D:\xampp\htdocs\sistema_aparcamiento\obtener_vehiculos.php:53
+Stack trace:
+#0 {main}
+  thrown in D:\xampp\htdocs\sistema_aparcamiento\obtener_vehiculos.php on line 53
+[12-Nov-2024 07:56:09 Europe/Berlin] PHP Warning:  Undefined property: PDO::$connect_error in D:\xampp\htdocs\sistema_aparcamiento\obtener_vehiculos.php on line 22
+[12-Nov-2024 07:56:09 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to undefined method PDOStatement::fetch_assoc() in D:\xampp\htdocs\sistema_aparcamiento\obtener_vehiculos.php:53
+Stack trace:
+#0 {main}
+  thrown in D:\xampp\htdocs\sistema_aparcamiento\obtener_vehiculos.php on line 53
+[12-Nov-2024 07:56:16 Europe/Berlin] PHP Warning:  Undefined property: PDO::$connect_error in D:\xampp\htdocs\sistema_aparcamiento\agregar_vehiculo.php on line 20
+[12-Nov-2024 07:56:16 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to undefined method PDO::begin_transaction() in D:\xampp\htdocs\sistema_aparcamiento\agregar_vehiculo.php:37
+Stack trace:
+#0 {main}
+  thrown in D:\xampp\htdocs\sistema_aparcamiento\agregar_vehiculo.php on line 37
+[12-Nov-2024 07:58:26 Europe/Berlin] PHP Warning:  Undefined property: PDO::$connect_error in D:\xampp\htdocs\sistema_aparcamiento\obtener_vehiculos.php on line 22
+[12-Nov-2024 07:58:26 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to undefined method PDOStatement::fetch_assoc() in D:\xampp\htdocs\sistema_aparcamiento\obtener_vehiculos.php:53
+Stack trace:
+#0 {main}
+  thrown in D:\xampp\htdocs\sistema_aparcamiento\obtener_vehiculos.php on line 53
+[12-Nov-2024 07:58:54 Europe/Berlin] PHP Warning:  Undefined property: PDO::$connect_error in D:\xampp\htdocs\sistema_aparcamiento\obtener_vehiculos.php on line 22
+[12-Nov-2024 07:58:54 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to undefined method PDOStatement::fetch_assoc() in D:\xampp\htdocs\sistema_aparcamiento\obtener_vehiculos.php:53
+Stack trace:
+#0 {main}
+  thrown in D:\xampp\htdocs\sistema_aparcamiento\obtener_vehiculos.php on line 53
+[12-Nov-2024 07:58:54 Europe/Berlin] PHP Warning:  Undefined property: PDO::$connect_error in D:\xampp\htdocs\sistema_aparcamiento\obtener_vehiculos.php on line 22
+[12-Nov-2024 07:58:54 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to undefined method PDOStatement::fetch_assoc() in D:\xampp\htdocs\sistema_aparcamiento\obtener_vehiculos.php:53
+Stack trace:
+#0 {main}
+  thrown in D:\xampp\htdocs\sistema_aparcamiento\obtener_vehiculos.php on line 53
+[12-Nov-2024 07:58:54 Europe/Berlin] PHP Warning:  Undefined property: PDO::$connect_error in D:\xampp\htdocs\sistema_aparcamiento\obtener_vehiculos.php on line 22
+[12-Nov-2024 07:58:54 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to undefined method PDOStatement::fetch_assoc() in D:\xampp\htdocs\sistema_aparcamiento\obtener_vehiculos.php:53
+Stack trace:
+#0 {main}
+  thrown in D:\xampp\htdocs\sistema_aparcamiento\obtener_vehiculos.php on line 53
+[12-Nov-2024 07:58:55 Europe/Berlin] PHP Warning:  Undefined property: PDO::$connect_error in D:\xampp\htdocs\sistema_aparcamiento\obtener_vehiculos.php on line 22
+[12-Nov-2024 07:58:55 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to undefined method PDOStatement::fetch_assoc() in D:\xampp\htdocs\sistema_aparcamiento\obtener_vehiculos.php:53
+Stack trace:
+#0 {main}
+  thrown in D:\xampp\htdocs\sistema_aparcamiento\obtener_vehiculos.php on line 53
+[12-Nov-2024 07:59:02 Europe/Berlin] PHP Warning:  Undefined property: PDO::$connect_error in D:\xampp\htdocs\sistema_aparcamiento\obtener_vehiculos.php on line 22
+[12-Nov-2024 07:59:02 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to undefined method PDOStatement::fetch_assoc() in D:\xampp\htdocs\sistema_aparcamiento\obtener_vehiculos.php:53
+Stack trace:
+#0 {main}
+  thrown in D:\xampp\htdocs\sistema_aparcamiento\obtener_vehiculos.php on line 53
+[12-Nov-2024 07:59:15 Europe/Berlin] PHP Warning:  Undefined property: PDO::$connect_error in D:\xampp\htdocs\sistema_aparcamiento\agregar_vehiculo.php on line 20
+[12-Nov-2024 07:59:15 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to undefined method PDO::begin_transaction() in D:\xampp\htdocs\sistema_aparcamiento\agregar_vehiculo.php:37
+Stack trace:
+#0 {main}
+  thrown in D:\xampp\htdocs\sistema_aparcamiento\agregar_vehiculo.php on line 37
+[12-Nov-2024 08:05:42 Europe/Berlin] PHP Warning:  Undefined property: PDO::$connect_error in D:\xampp\htdocs\sistema_aparcamiento\obtener_vehiculos.php on line 22
+[12-Nov-2024 08:05:42 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to undefined method PDOStatement::fetch_assoc() in D:\xampp\htdocs\sistema_aparcamiento\obtener_vehiculos.php:53
+Stack trace:
+#0 {main}
+  thrown in D:\xampp\htdocs\sistema_aparcamiento\obtener_vehiculos.php on line 53
+[12-Nov-2024 08:05:43 Europe/Berlin] PHP Warning:  Undefined property: PDO::$connect_error in D:\xampp\htdocs\sistema_aparcamiento\obtener_vehiculos.php on line 22
+[12-Nov-2024 08:05:43 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to undefined method PDOStatement::fetch_assoc() in D:\xampp\htdocs\sistema_aparcamiento\obtener_vehiculos.php:53
+Stack trace:
+#0 {main}
+  thrown in D:\xampp\htdocs\sistema_aparcamiento\obtener_vehiculos.php on line 53
+[12-Nov-2024 08:05:49 Europe/Berlin] PHP Warning:  Undefined property: PDO::$connect_error in D:\xampp\htdocs\sistema_aparcamiento\obtener_vehiculos.php on line 22
+[12-Nov-2024 08:05:49 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to undefined method PDOStatement::fetch_assoc() in D:\xampp\htdocs\sistema_aparcamiento\obtener_vehiculos.php:53
+Stack trace:
+#0 {main}
+  thrown in D:\xampp\htdocs\sistema_aparcamiento\obtener_vehiculos.php on line 53
+[12-Nov-2024 08:07:53 Europe/Berlin] PHP Warning:  Undefined property: PDO::$connect_error in D:\xampp\htdocs\sistema_aparcamiento\agregar_vehiculo.php on line 20
+[12-Nov-2024 08:07:53 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to undefined method PDO::begin_transaction() in D:\xampp\htdocs\sistema_aparcamiento\agregar_vehiculo.php:37
+Stack trace:
+#0 {main}
+  thrown in D:\xampp\htdocs\sistema_aparcamiento\agregar_vehiculo.php on line 37
+[12-Nov-2024 08:15:41 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-12 08:15:41
+[12-Nov-2024 08:15:41 Europe/Berlin] PHP Warning:  Undefined variable $response in D:\xampp\htdocs\sistema_aparcamiento\obtener_vehiculos.php on line 75
+[12-Nov-2024 08:15:41 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to undefined method PDOStatement::fetch_assoc() in D:\xampp\htdocs\sistema_aparcamiento\obtener_vehiculos.php:50
+Stack trace:
+#0 {main}
+  thrown in D:\xampp\htdocs\sistema_aparcamiento\obtener_vehiculos.php on line 50
+[12-Nov-2024 08:15:48 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-12 08:15:48
+[12-Nov-2024 08:15:48 Europe/Berlin] PHP Warning:  Undefined variable $response in D:\xampp\htdocs\sistema_aparcamiento\obtener_vehiculos.php on line 75
+[12-Nov-2024 08:15:48 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to undefined method PDOStatement::fetch_assoc() in D:\xampp\htdocs\sistema_aparcamiento\obtener_vehiculos.php:50
+Stack trace:
+#0 {main}
+  thrown in D:\xampp\htdocs\sistema_aparcamiento\obtener_vehiculos.php on line 50
+[12-Nov-2024 08:15:50 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-12 08:15:50
+[12-Nov-2024 08:15:50 Europe/Berlin] PHP Warning:  Undefined variable $response in D:\xampp\htdocs\sistema_aparcamiento\obtener_vehiculos.php on line 75
+[12-Nov-2024 08:15:50 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to undefined method PDOStatement::fetch_assoc() in D:\xampp\htdocs\sistema_aparcamiento\obtener_vehiculos.php:50
+Stack trace:
+#0 {main}
+  thrown in D:\xampp\htdocs\sistema_aparcamiento\obtener_vehiculos.php on line 50
+[12-Nov-2024 17:16:05 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-12 17:16:04
+[12-Nov-2024 17:17:04 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-12 17:17:04
+[12-Nov-2024 17:17:14 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-12 17:17:14
+[12-Nov-2024 17:18:04 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-12 17:18:04
+[12-Nov-2024 17:18:04 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-12 17:18:04
+[12-Nov-2024 17:18:08 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-12 17:18:08
+[12-Nov-2024 17:18:16 Europe/Berlin] Datos recibidos en agregar_vehiculo.php: {"placa":"456","tipo":"Auto","precio":"4"}
+[12-Nov-2024 17:18:19 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to undefined method PDOStatement::bind_param() in D:\xampp\htdocs\sistema_aparcamiento\imprimir_ticket.php:38
+Stack trace:
+#0 {main}
+
+Next Error: Call to undefined method PDOStatement::close() in D:\xampp\htdocs\sistema_aparcamiento\imprimir_ticket.php:166
+Stack trace:
+#0 {main}
+  thrown in D:\xampp\htdocs\sistema_aparcamiento\imprimir_ticket.php on line 166
+[12-Nov-2024 17:43:42 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-12 17:43:42
+[12-Nov-2024 17:43:53 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-12 17:43:53
+[12-Nov-2024 17:44:18 Europe/Berlin] Datos recibidos en agregar_vehiculo.php: {"placa":"tyui","tipo":"Auto","precio":"4"}
+[12-Nov-2024 17:44:19 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to undefined method PDOStatement::bind_param() in D:\xampp\htdocs\sistema_aparcamiento\imprimir_ticket.php:38
+Stack trace:
+#0 {main}
+
+Next Error: Call to undefined method PDOStatement::close() in D:\xampp\htdocs\sistema_aparcamiento\imprimir_ticket.php:166
+Stack trace:
+#0 {main}
+  thrown in D:\xampp\htdocs\sistema_aparcamiento\imprimir_ticket.php on line 166
+[12-Nov-2024 17:44:20 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-12 17:44:20
+[12-Nov-2024 17:44:53 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to undefined method PDOStatement::bind_param() in D:\xampp\htdocs\sistema_aparcamiento\imprimir_ticket.php:38
+Stack trace:
+#0 {main}
+
+Next Error: Call to undefined method PDOStatement::close() in D:\xampp\htdocs\sistema_aparcamiento\imprimir_ticket.php:166
+Stack trace:
+#0 {main}
+  thrown in D:\xampp\htdocs\sistema_aparcamiento\imprimir_ticket.php on line 166
+[12-Nov-2024 17:46:58 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-12 17:46:58
+[12-Nov-2024 17:47:10 Europe/Berlin] Datos recibidos en agregar_vehiculo.php: {"placa":"987","tipo":"Auto","precio":"4"}
+[12-Nov-2024 17:47:11 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to undefined method PDOStatement::bind_param() in D:\xampp\htdocs\sistema_aparcamiento\imprimir_ticket.php:38
+Stack trace:
+#0 {main}
+
+Next Error: Call to undefined method PDOStatement::close() in D:\xampp\htdocs\sistema_aparcamiento\imprimir_ticket.php:166
+Stack trace:
+#0 {main}
+  thrown in D:\xampp\htdocs\sistema_aparcamiento\imprimir_ticket.php on line 166
+[12-Nov-2024 17:47:13 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-12 17:47:13
+[12-Nov-2024 22:27:46 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-12 22:27:46
+[12-Nov-2024 22:28:01 Europe/Berlin] Datos recibidos en agregar_vehiculo.php: {"placa":"yuiop","tipo":"Auto","precio":"4"}
+[12-Nov-2024 22:28:02 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to undefined method PDOStatement::bind_param() in D:\xampp\htdocs\sistema_aparcamiento\imprimir_ticket.php:38
+Stack trace:
+#0 {main}
+
+Next Error: Call to undefined method PDOStatement::close() in D:\xampp\htdocs\sistema_aparcamiento\imprimir_ticket.php:169
+Stack trace:
+#0 {main}
+  thrown in D:\xampp\htdocs\sistema_aparcamiento\imprimir_ticket.php on line 169
+[12-Nov-2024 22:28:03 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-12 22:28:03
+[12-Nov-2024 22:38:49 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-12 22:38:49
+[12-Nov-2024 22:38:53 Europe/Berlin] PHP Warning:  Undefined variable $result in D:\xampp\htdocs\sistema_aparcamiento\imprimir_ticket.php on line 45
+[12-Nov-2024 22:38:53 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to a member function fetch_assoc() on null in D:\xampp\htdocs\sistema_aparcamiento\imprimir_ticket.php:45
+Stack trace:
+#0 {main}
+  thrown in D:\xampp\htdocs\sistema_aparcamiento\imprimir_ticket.php on line 45
+[12-Nov-2024 22:39:28 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-12 22:39:28
+[12-Nov-2024 22:39:38 Europe/Berlin] Datos recibidos en agregar_vehiculo.php: {"placa":"bnm","tipo":"Auto","precio":"4"}
+[12-Nov-2024 22:39:38 Europe/Berlin] Error en agregar_vehiculo.php: El vehículo ya se encuentra estacionado
+[12-Nov-2024 22:39:46 Europe/Berlin] Datos recibidos en agregar_vehiculo.php: {"placa":"bnmjkl","tipo":"Auto","precio":"4"}
+[12-Nov-2024 22:39:47 Europe/Berlin] PHP Warning:  Undefined variable $result in D:\xampp\htdocs\sistema_aparcamiento\imprimir_ticket.php on line 45
+[12-Nov-2024 22:39:47 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to a member function fetch_assoc() on null in D:\xampp\htdocs\sistema_aparcamiento\imprimir_ticket.php:45
+Stack trace:
+#0 {main}
+  thrown in D:\xampp\htdocs\sistema_aparcamiento\imprimir_ticket.php on line 45
+[12-Nov-2024 22:39:49 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-12 22:39:49
+[12-Nov-2024 22:47:45 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-12 22:47:45
+[12-Nov-2024 22:47:55 Europe/Berlin] Datos recibidos en agregar_vehiculo.php: {"placa":"bnmjkl0","tipo":"Auto","precio":"4"}
+[12-Nov-2024 22:47:56 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-12 22:47:56
+[12-Nov-2024 22:47:57 Europe/Berlin] PHP Warning:  Undefined variable $result in D:\xampp\htdocs\sistema_aparcamiento\imprimir_ticket.php on line 45
+[12-Nov-2024 22:47:57 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to a member function fetch_assoc() on null in D:\xampp\htdocs\sistema_aparcamiento\imprimir_ticket.php:45
+Stack trace:
+#0 {main}
+  thrown in D:\xampp\htdocs\sistema_aparcamiento\imprimir_ticket.php on line 45
+[12-Nov-2024 22:47:58 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-12 22:47:58
+[13-Nov-2024 03:28:29 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-13 03:28:29
+[13-Nov-2024 03:28:36 Europe/Berlin] Datos recibidos en agregar_vehiculo.php: {"placa":"567tyu","tipo":"Auto","precio":"4"}
+[13-Nov-2024 03:28:37 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-13 03:28:37
+[13-Nov-2024 03:28:38 Europe/Berlin] PHP Warning:  require_once(ticket_template.php): Failed to open stream: No such file or directory in D:\xampp\htdocs\sistema_aparcamiento\imprimir_ticket.php on line 46
+[13-Nov-2024 03:28:38 Europe/Berlin] PHP Fatal error:  Uncaught Error: Failed opening required 'ticket_template.php' (include_path='D:\xampp\php\PEAR') in D:\xampp\htdocs\sistema_aparcamiento\imprimir_ticket.php:46
+Stack trace:
+#0 {main}
+  thrown in D:\xampp\htdocs\sistema_aparcamiento\imprimir_ticket.php on line 46
+[13-Nov-2024 03:28:39 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-13 03:28:39
+[13-Nov-2024 03:33:54 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-13 03:33:54
+[13-Nov-2024 03:34:04 Europe/Berlin] Datos recibidos en agregar_vehiculo.php: {"placa":"789uio","tipo":"Auto","precio":"4"}
+[13-Nov-2024 03:34:05 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-13 03:34:05
+[13-Nov-2024 03:34:07 Europe/Berlin] Datos del vehículo recuperados correctamente para ID: 16
+[13-Nov-2024 03:34:07 Europe/Berlin] PHP Warning:  require_once(ticket_template.php): Failed to open stream: No such file or directory in D:\xampp\htdocs\sistema_aparcamiento\imprimir_ticket.php on line 61
+[13-Nov-2024 03:34:07 Europe/Berlin] PHP Fatal error:  Uncaught Error: Failed opening required 'ticket_template.php' (include_path='D:\xampp\php\PEAR') in D:\xampp\htdocs\sistema_aparcamiento\imprimir_ticket.php:61
+Stack trace:
+#0 {main}
+  thrown in D:\xampp\htdocs\sistema_aparcamiento\imprimir_ticket.php on line 61
+[13-Nov-2024 03:34:21 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-13 03:34:21
+[13-Nov-2024 03:40:06 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-13 03:40:06
+[13-Nov-2024 03:40:13 Europe/Berlin] Datos recibidos en agregar_vehiculo.php: {"placa":"klñ123","tipo":"Auto","precio":"4"}
+[13-Nov-2024 03:40:15 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-13 03:40:15
+[13-Nov-2024 03:40:16 Europe/Berlin] Datos del vehículo recuperados correctamente para ID: 17
+[13-Nov-2024 03:40:17 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-13 03:40:17
+[13-Nov-2024 03:42:35 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-13 03:42:35
+[13-Nov-2024 03:43:14 Europe/Berlin] Datos del vehículo recuperados correctamente para ID: 17
+[13-Nov-2024 03:43:14 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-13 03:43:14
+[13-Nov-2024 03:43:18 Europe/Berlin] Datos del vehículo recuperados correctamente para ID: 17
+[13-Nov-2024 03:43:18 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-13 03:43:18
+[13-Nov-2024 03:59:45 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-13 03:59:45
+[13-Nov-2024 03:59:51 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-13 03:59:51
+[13-Nov-2024 04:00:11 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-13 04:00:11
+[13-Nov-2024 04:00:22 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-13 04:00:22
+[13-Nov-2024 04:01:44 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-13 04:01:44
+[13-Nov-2024 07:48:29 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-13 07:48:29
+[13-Nov-2024 07:48:37 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-13 07:48:37
+[13-Nov-2024 07:58:17 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-13 07:58:17
+[13-Nov-2024 07:58:22 Europe/Berlin] Datos recibidos en agregar_vehiculo.php: {"placa":"456rty","tipo":"Auto","precio":"4"}
+[13-Nov-2024 07:58:23 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-13 07:58:23
+[13-Nov-2024 07:58:27 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-13 07:58:27
+[13-Nov-2024 07:58:32 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-13 07:58:32
+[13-Nov-2024 07:58:34 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-13 07:58:34
+[13-Nov-2024 07:58:44 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-13 07:58:44
+[13-Nov-2024 07:59:35 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-13 07:59:35
+[13-Nov-2024 08:00:01 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-13 08:00:01
+[13-Nov-2024 08:03:23 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-13 08:03:23
+[13-Nov-2024 08:03:30 Europe/Berlin] Datos recibidos en agregar_vehiculo.php: {"placa":"123qweasd","tipo":"Auto","precio":"4"}
+[13-Nov-2024 08:03:31 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-13 08:03:31
+[13-Nov-2024 08:03:33 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-13 08:03:33
+[13-Nov-2024 08:03:43 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-13 08:03:43
+[13-Nov-2024 08:04:39 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-13 08:04:39
+[13-Nov-2024 08:10:57 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-13 08:10:57
+[13-Nov-2024 08:11:02 Europe/Berlin] Datos recibidos en agregar_vehiculo.php: {"placa":"123qweasdzcx","tipo":"Auto","precio":"4"}
+[13-Nov-2024 08:11:03 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-13 08:11:03
+[13-Nov-2024 08:11:04 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-13 08:11:04
+[13-Nov-2024 08:11:12 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-13 08:11:12
+[13-Nov-2024 08:11:21 Europe/Berlin] Datos del vehículo recuperados correctamente para ID: 20
+[13-Nov-2024 08:11:21 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-13 08:11:21
+[13-Nov-2024 08:11:24 Europe/Berlin] Datos del vehículo recuperados correctamente para ID: 20
+[13-Nov-2024 08:11:24 Europe/Berlin] Datos del vehículo recuperados correctamente para ID: 20
+[13-Nov-2024 08:11:24 Europe/Berlin] Datos del vehículo recuperados correctamente para ID: 20
+[13-Nov-2024 08:11:28 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-13 08:11:28
+[13-Nov-2024 08:11:29 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-13 08:11:29
+[13-Nov-2024 08:11:33 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-13 08:11:33
+[13-Nov-2024 08:12:17 Europe/Berlin] Datos del vehículo recuperados correctamente para ID: 20
+[13-Nov-2024 08:12:17 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-13 08:12:17
+[13-Nov-2024 08:12:31 Europe/Berlin] Datos del vehículo recuperados correctamente para ID: 6
+[13-Nov-2024 08:12:31 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-13 08:12:31
+[13-Nov-2024 08:20:08 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-13 08:20:08
+[13-Nov-2024 08:20:16 Europe/Berlin] Datos recibidos en agregar_vehiculo.php: {"placa":"123qweasdzxc","tipo":"Auto","precio":"4"}
+[13-Nov-2024 08:20:17 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-13 08:20:17
+[13-Nov-2024 08:20:18 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-13 08:20:18
+[13-Nov-2024 08:22:13 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-13 08:22:13
+[13-Nov-2024 08:30:39 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-13 08:30:39
+[13-Nov-2024 08:30:43 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-13 08:30:43
+[13-Nov-2024 08:32:27 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-13 08:32:27
+[13-Nov-2024 08:34:05 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-13 08:34:05
+[13-Nov-2024 18:43:58 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-13 18:43:58
+[13-Nov-2024 18:44:08 Europe/Berlin] Datos recibidos en agregar_vehiculo.php: {"placa":"345ert","tipo":"Auto","precio":"4"}
+[13-Nov-2024 18:44:10 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-13 18:44:10
+[13-Nov-2024 18:44:11 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-13 18:44:11
+[13-Nov-2024 18:47:06 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-13 18:47:06
+[13-Nov-2024 18:59:06 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-13 18:59:06
+[13-Nov-2024 19:02:41 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-13 19:02:41
+[13-Nov-2024 19:05:34 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-13 19:05:34
+[13-Nov-2024 19:07:15 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-13 19:07:15
+[13-Nov-2024 19:10:41 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-13 19:10:41
+[13-Nov-2024 19:13:51 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-13 19:13:51
+[13-Nov-2024 19:14:12 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-13 19:14:12
+[13-Nov-2024 19:16:45 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-13 19:16:45
+[13-Nov-2024 19:19:37 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-13 19:19:37
+[13-Nov-2024 19:25:27 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-13 19:25:27
+[13-Nov-2024 19:38:15 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-13 19:38:15
+[13-Nov-2024 19:39:19 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-13 19:39:19
+[13-Nov-2024 19:40:53 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-13 19:40:53
+[13-Nov-2024 19:50:47 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-13 19:50:47
+[13-Nov-2024 20:30:03 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-13 20:30:03
+[14-Nov-2024 01:10:10 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-14 01:10:10
+[14-Nov-2024 01:31:21 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-14 01:31:21
+[14-Nov-2024 01:31:50 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-14 01:31:50
+[14-Nov-2024 01:32:11 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-14 01:32:11
+[14-Nov-2024 01:32:17 Europe/Berlin] Datos recibidos en agregar_vehiculo.php: {"placa":"klñiop","tipo":"Auto","precio":"4"}
+[14-Nov-2024 01:32:18 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-14 01:32:18
+[14-Nov-2024 01:32:19 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-14 01:32:19
+[14-Nov-2024 01:32:54 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-14 01:32:54
+[14-Nov-2024 01:33:00 Europe/Berlin] Datos recibidos en agregar_vehiculo.php: {"placa":"bnmjkluio","tipo":"Auto","precio":"4"}
+[14-Nov-2024 01:33:01 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-14 01:33:01
+[14-Nov-2024 01:33:02 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-14 01:33:02
+[14-Nov-2024 01:37:11 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-14 01:37:11
+[14-Nov-2024 01:37:16 Europe/Berlin] Datos recibidos en agregar_vehiculo.php: {"placa":"bnmdfgert","tipo":"Auto","precio":"4"}
+[14-Nov-2024 01:37:17 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-14 01:37:17
+[14-Nov-2024 01:37:18 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-14 01:37:18
+[14-Nov-2024 01:37:39 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-14 01:37:39
+[14-Nov-2024 01:52:36 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-14 01:52:36
+[14-Nov-2024 01:57:47 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-14 01:57:47
+[14-Nov-2024 01:58:00 Europe/Berlin] Datos del vehículo recuperados correctamente para ID: 25
+[14-Nov-2024 01:58:00 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-14 01:58:00
+[14-Nov-2024 02:01:37 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-14 02:01:37
+[14-Nov-2024 02:01:42 Europe/Berlin] Datos recibidos en agregar_vehiculo.php: {"placa":"bnmjkl","tipo":"Auto","precio":"4"}
+[14-Nov-2024 02:01:42 Europe/Berlin] Error en agregar_vehiculo.php: El vehículo ya se encuentra estacionado
+[14-Nov-2024 02:01:48 Europe/Berlin] Datos recibidos en agregar_vehiculo.php: {"placa":"bnmjkl00","tipo":"Auto","precio":"4"}
+[14-Nov-2024 02:01:49 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-14 02:01:49
+[14-Nov-2024 02:01:50 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-14 02:01:50
+[14-Nov-2024 02:02:02 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-14 02:02:02
+[14-Nov-2024 02:02:11 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-14 02:02:11
+[14-Nov-2024 02:02:18 Europe/Berlin] Datos del vehículo recuperados correctamente para ID: 26
+[14-Nov-2024 02:02:18 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-14 02:02:18
+[14-Nov-2024 02:02:41 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-14 02:02:41
+[14-Nov-2024 02:02:43 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-14 02:02:43
+[14-Nov-2024 07:10:12 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-14 07:10:12
+[14-Nov-2024 07:15:51 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-14 07:15:51
+[14-Nov-2024 07:16:07 Europe/Berlin] Datos recibidos en agregar_vehiculo.php: {"placa":"laprimadejordan","tipo":"Auto","precio":"4"}
+[14-Nov-2024 07:16:09 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-14 07:16:09
+[14-Nov-2024 07:16:17 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-14 07:16:17
+[14-Nov-2024 07:16:46 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-14 07:16:46
+[14-Nov-2024 07:17:31 Europe/Berlin] Datos del vehículo recuperados correctamente para ID: 27
+[14-Nov-2024 07:17:32 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-14 07:17:32
+[14-Nov-2024 07:18:21 Europe/Berlin] Datos del vehículo recuperados correctamente para ID: 24
+[14-Nov-2024 07:18:21 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-14 07:18:21
+[14-Nov-2024 07:21:25 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-14 07:21:25
+[14-Nov-2024 07:23:58 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-14 07:23:58
+[14-Nov-2024 07:23:59 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-14 07:23:59
+[14-Nov-2024 07:24:03 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-14 07:24:03
+[14-Nov-2024 07:25:44 Europe/Berlin] Datos recibidos en agregar_vehiculo.php: {"placa":"123456","tipo":"Minibus","precio":"6"}
+[14-Nov-2024 07:25:45 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-14 07:25:45
+[14-Nov-2024 07:25:47 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-14 07:25:47
+[14-Nov-2024 07:26:02 Europe/Berlin] Datos recibidos en agregar_vehiculo.php: {"placa":"qwerasdfzxcv","tipo":"Camión","precio":"20"}
+[14-Nov-2024 07:26:03 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-14 07:26:03
+[14-Nov-2024 07:26:04 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-14 07:26:04
+[14-Nov-2024 07:34:17 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-14 07:34:17
+[14-Nov-2024 19:58:29 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-14 19:58:29
+[14-Nov-2024 20:00:56 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-14 20:00:56
+[14-Nov-2024 20:01:04 Europe/Berlin] Datos recibidos en agregar_vehiculo.php: {"placa":"bnm678","tipo":"Auto","precio":"4"}
+[14-Nov-2024 20:01:06 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-14 20:01:06
+[14-Nov-2024 20:01:07 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-14 20:01:07
+[14-Nov-2024 20:01:22 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-14 20:01:22
+[14-Nov-2024 20:11:01 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-14 20:11:01
+[14-Nov-2024 20:11:09 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-14 20:11:09
+[14-Nov-2024 20:11:14 Europe/Berlin] Datos recibidos en agregar_vehiculo.php: {"placa":"bnm234","tipo":"Auto","precio":"4"}
+[14-Nov-2024 20:11:15 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-14 20:11:15
+[14-Nov-2024 20:11:16 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-14 20:11:16
+[14-Nov-2024 20:12:20 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-14 20:12:20
+[14-Nov-2024 20:12:25 Europe/Berlin] Datos recibidos en agregar_vehiculo.php: {"placa":"vbn678","tipo":"Auto","precio":"4"}
+[14-Nov-2024 20:12:26 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-14 20:12:26
+[14-Nov-2024 20:12:27 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-14 20:12:27
+[14-Nov-2024 20:17:48 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-14 20:17:48
+[15-Nov-2024 07:22:10 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-15 07:22:10
+[15-Nov-2024 07:22:22 Europe/Berlin] Datos del vehículo recuperados correctamente para ID: 27
+[15-Nov-2024 07:22:23 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-15 07:22:23
+[15-Nov-2024 07:23:22 Europe/Berlin] Datos recibidos en agregar_vehiculo.php: {"placa":"laprimadejordan","tipo":"Auto","precio":"4"}
+[15-Nov-2024 07:23:23 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-15 07:23:23
+[15-Nov-2024 07:23:24 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-15 07:23:24
+[15-Nov-2024 07:33:12 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-15 07:33:12
+[15-Nov-2024 07:33:41 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-15 07:33:41
+[15-Nov-2024 07:33:55 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-15 07:33:55
+[15-Nov-2024 07:33:56 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-15 07:33:56
+[15-Nov-2024 07:34:01 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-15 07:34:01
+[15-Nov-2024 07:35:44 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-15 07:35:44
+[15-Nov-2024 07:35:46 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-15 07:35:46
+[15-Nov-2024 07:40:01 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-15 07:40:01
+[15-Nov-2024 07:40:02 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-15 07:40:02
+[15-Nov-2024 07:40:05 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-15 07:40:05
+[15-Nov-2024 07:40:13 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-15 07:40:13
+[15-Nov-2024 07:44:48 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-15 07:44:48
+[15-Nov-2024 07:44:53 Europe/Berlin] Datos recibidos en agregar_vehiculo.php: {"placa":"laprimadepatrick","tipo":"Auto","precio":"4"}
+[15-Nov-2024 07:44:54 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-15 07:44:54
+[15-Nov-2024 07:44:55 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-15 07:44:55
+[15-Nov-2024 07:53:20 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-15 07:53:20
+[15-Nov-2024 07:55:28 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-15 07:55:28
+[15-Nov-2024 07:55:34 Europe/Berlin] Datos recibidos en agregar_vehiculo.php: {"placa":"12345678","tipo":"Auto","precio":"4"}
+[15-Nov-2024 07:55:35 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-15 07:55:35
+[15-Nov-2024 07:55:37 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-15 07:55:37
+[15-Nov-2024 07:55:44 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-15 07:55:44
+[15-Nov-2024 08:06:48 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-15 08:06:48
+[15-Nov-2024 08:08:11 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-15 08:08:11
+[15-Nov-2024 08:08:16 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-15 08:08:16
+[15-Nov-2024 08:08:48 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-15 08:08:48
+[15-Nov-2024 08:09:21 Europe/Berlin] Datos recibidos en agregar_vehiculo.php: {"placa":"laprimadejahir","tipo":"Auto","precio":"4"}
+[15-Nov-2024 08:09:22 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-15 08:09:22
+[15-Nov-2024 08:09:23 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-15 08:09:23
+[15-Nov-2024 22:54:02 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-15 22:54:02
+[15-Nov-2024 22:56:36 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-15 22:56:36
+[15-Nov-2024 22:58:08 Europe/Berlin] Datos recibidos en agregar_vehiculo.php: {"placa":"laprimadejordan","tipo":"Auto","precio":"4"}
+[15-Nov-2024 22:58:11 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-15 22:58:11
+[15-Nov-2024 22:58:26 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-15 22:58:26
+[15-Nov-2024 22:58:44 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-15 22:58:44
+[15-Nov-2024 22:58:57 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-15 22:58:57
+[15-Nov-2024 22:59:09 Europe/Berlin] Datos del vehículo recuperados correctamente para ID: 37
+[15-Nov-2024 22:59:09 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-15 22:59:09
+[15-Nov-2024 23:01:36 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-15 23:01:36
+[15-Nov-2024 23:03:41 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-15 23:03:41
+[15-Nov-2024 23:06:57 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-15 23:06:57
+[15-Nov-2024 23:14:13 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-15 23:14:13
+[16-Nov-2024 01:38:24 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-16 01:38:24
+[16-Nov-2024 02:24:24 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-16 02:24:24
+[16-Nov-2024 02:24:38 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-16 02:24:38
+[16-Nov-2024 02:24:43 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-16 02:24:43
+[16-Nov-2024 02:25:50 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-16 02:25:50
+[16-Nov-2024 02:25:56 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-16 02:25:56
+[16-Nov-2024 02:29:49 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-16 02:29:49
+[16-Nov-2024 02:29:55 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-16 02:29:55
+[16-Nov-2024 02:30:03 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-16 02:30:03
+[16-Nov-2024 03:39:00 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-16 03:39:00
+[16-Nov-2024 04:51:41 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-16 04:51:41
+[16-Nov-2024 05:22:39 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-16 05:22:39
+[16-Nov-2024 05:22:44 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-16 05:22:44
+[16-Nov-2024 05:22:54 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-16 05:22:54
+[16-Nov-2024 05:32:48 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-16 05:32:48
+[16-Nov-2024 05:33:17 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-16 05:33:17
+[16-Nov-2024 10:25:29 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-16 10:25:29
+[16-Nov-2024 10:27:03 Europe/Berlin] obtener_vehiculos.php llamado: 2024-11-16 10:27:03
+[17-Nov-2024 01:46:22 Europe/Berlin] Datos del vehículo recuperados correctamente para ID: 3
+[17-Nov-2024 01:46:22 Europe/Berlin] Error en imprimir_ticket.php: Failed to parse time string (Pendiente Pendiente) at position 0 (P): The timezone could not be found in the database
+[18-Nov-2024 04:51:39 Europe/Berlin] Datos del vehículo recuperados correctamente para ID: 3
+[18-Nov-2024 04:51:57 Europe/Berlin] Datos del vehículo recuperados correctamente para ID: 1
+[18-Nov-2024 04:52:06 Europe/Berlin] Datos del vehículo recuperados correctamente para ID: 1

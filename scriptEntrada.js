@@ -1,271 +1,293 @@
+const style = document.createElement('style');
+style.textContent = `
+    .estado-ocupado {
+        background-color: #E3F2FD;
+        padding: 5px 10px;
+        border-radius: 4px;
+        display: inline-block;
+    }
+    .estado-estacionado {
+        background-color: #E8F5E9;
+        color: #2E7D32;
+        padding: 5px 10px;
+        border-radius: 4px;
+        display: inline-block;
+    }
+    .btn-imprimir {
+        background-color: #2196F3;
+        color: white;
+        border: none;
+        padding: 5px 15px;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+    .btn-imprimir:hover {
+        background-color: #1976D2;
+    }
+    .btn-imprimir:disabled {
+        background-color: #BDBDBD;
+        cursor: not-allowed;
+    }
+    .alert {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        padding: 15px;
+        border-radius: 4px;
+        z-index: 1000;
+        max-width: 400px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+    .alert-info {
+        background-color: #E3F2FD;
+        color: #1565C0;
+        border: 1px solid #90CAF9;
+    }
+    .alert-error {
+        background-color: #FFEBEE;
+        color: #C62828;
+        border: 1px solid #FFCDD2;
+    }
+    /* Resto de tus estilos existentes */
+`;
+document.head.appendChild(style);
+
 let currentPage = 1;
-let rowsPerPage = 5;
-let isSubmitting = false;
+let totalPages = 1;
 
-// Un solo event listener para DOMContentLoaded
 document.addEventListener('DOMContentLoaded', function() {
-    initializeApp();
-});
+    cargarTipos();
+    cargarVehiculos();
+    const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+    const sidebar = document.querySelector('.sidebar');
 
-function initializeApp() {
-    actualizarTablaVehiculos();
-    
-    // Inicializar el formulario
-    const form = document.querySelector('form');
-    if (form) {
-        form.addEventListener('submit', addVehicle);
-    } else {
-        console.error('El formulario no se encontró en el DOM');
-    }
-    
-    // Inicializar la paginación
-    const entriesSelect = document.getElementById('entries');
-    if (entriesSelect) {
-        entriesSelect.addEventListener('change', changeEntries);
-    }
-    
-    // Inicializar la búsqueda
-    const searchInput = document.getElementById('search-input');
-    if (searchInput) {
-        searchInput.addEventListener('input', searchTable);
-    }
-}
+    mobileMenuToggle.addEventListener('click', () => {
+        sidebar.classList.toggle('active');
+    });
 
-function actualizarTablaVehiculos() {
-    console.log("Actualizando tabla de vehículos...");
-
-    fetch('obtener_vehiculos.php')
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        }
-        return response.json();
-    })
-    .then(response => {
-        if (!response.success) {
-            throw new Error(response.error || 'Error desconocido');
-        }
-
-        const data = response.data;
-        console.log("Datos recibidos:", data);
-
-        const vehicleTable = document.querySelector("#vehicle-table tbody");
-        if (!vehicleTable) {
-            console.error("No se encontró la tabla de vehículos");
-            return;
-        }
-
-        // Limpiar la tabla
-        vehicleTable.innerHTML = '';
-
-        if (!Array.isArray(data) || data.length === 0) {
-            vehicleTable.innerHTML = '<tr><td colspan="6" class="text-center">No hay vehículos registrados</td></tr>';
-            return;
-        }
-
-        // Agregar los nuevos datos
-        data.forEach(vehiculo => {
-            const row = vehicleTable.insertRow();
-            row.innerHTML = `
-                <td>${vehiculo.id || ''}</td>
-                <td>${vehiculo.placa || ''}</td>
-                <td>${vehiculo.estacionamiento || ''}</td>
-                <td>${vehiculo.fecha_hora || ''}</td>
-                <td><span class="vehicle-status">${vehiculo.estado || ''}</span></td>
-                <td>
-                    <button onclick="imprimirInformacion(${vehiculo.id})" 
-                            class="print-btn">
-                        Imprimir
-                    </button>
-                </td>
-            `;
-        });
-
-        // Actualizar la paginación
-        displayPage(1);
-    })
-    .catch(error => {
-        console.error('Error al actualizar la tabla:', error);
-        const vehicleTable = document.querySelector("#vehicle-table tbody");
-        if (vehicleTable) {
-            vehicleTable.innerHTML = '<tr><td colspan="6" class="text-center">Error al cargar los datos</td></tr>';
+    // Close sidebar when clicking outside
+    document.addEventListener('click', (event) => {
+        if (!sidebar.contains(event.target) && !mobileMenuToggle.contains(event.target)) {
+            sidebar.classList.remove('active');
         }
     });
+
+    // Evento para cambio en número de entradas
+    document.getElementById('entries').addEventListener('change', function() {
+        currentPage = 1;
+        cargarVehiculos();
+    });
+
+    // Evento para búsqueda con debounce
+    document.getElementById('search-input').addEventListener('input', debounce(function() {
+        currentPage = 1;
+        cargarVehiculos();
+    }, 300));
+});
+
+function debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+        const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+    };
+}
+
+
+function cargarTipos() {
+    fetch('getTipos.php')
+        .then(response => response.json())
+        .then(tipos => {
+            const tipoSelect = document.getElementById('tipo');
+            const precioSelect = document.getElementById('precio');
+            
+            tipoSelect.innerHTML = '<option value="">Seleccione Tipo</option>';
+            precioSelect.innerHTML = '<option value="">Seleccione precio</option>';
+            
+            tipos.forEach(tipo => {
+                tipoSelect.innerHTML += `<option value="${tipo.id_tipo}">${tipo.tipo}</option>`;
+                precioSelect.innerHTML += `<option value="${tipo.id_tipo}">$${tipo.precio} → (${tipo.tipo})</option>`;
+            });
+        })
+        .catch(error => console.error('Error:', error));
+}
+
+
+function cargarVehiculos() {
+    const entriesPerPage = document.getElementById('entries').value;
+    const searchTerm = document.getElementById('search-input').value.trim();
+    
+    fetch(`getVehiculos.php?limit=${entriesPerPage}&page=${currentPage}&search=${encodeURIComponent(searchTerm)}`)
+        .then(response => response.json())
+        .then(data => {
+            if (data.error) {
+                console.error('Error:', data.error);
+                return;
+            }
+
+            const tbody = document.querySelector('#vehicle-table tbody');
+            totalPages = data.pages;
+
+            if (data.vehiculos.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="6" class="text-center">No hay vehículos registrados</td></tr>';
+                document.querySelector('.table-pagination').style.display = 'none';
+                return;
+            }
+
+            // Actualizar tabla
+            tbody.innerHTML = data.vehiculos.map((vehiculo, index) => {
+                const estadoClass = `estado estado-${vehiculo.estado.toLowerCase()}`;
+                const isDisabled = vehiculo.estado === 'estacionado' ? 'disabled' : '';
+                
+                return `
+                    <tr>
+                        <td>${((currentPage - 1) * entriesPerPage) + index + 1}</td>
+                        <td>${vehiculo.placa}</td>
+                        <td>${vehiculo.fecha_entrada}</td>
+                        <td>${vehiculo.hora_entrada}</td>
+                        <td><span class="${estadoClass}">${vehiculo.estado}</span></td>
+                        <td>
+                            <button onclick="imprimirTicket(${vehiculo.id_estacionamiento})" 
+                                    class="btn-imprimir"
+                                    ${isDisabled}>
+                                Imprimir
+                            </button>
+                        </td>
+                    </tr>
+                `;
+            }).join('');
+
+            actualizarPaginacion(data.pages);
+            document.querySelector('.table-pagination').style.display = data.pages > 1 ? 'flex' : 'none';
+        })
+        .catch(error => {
+            console.error('Error en la solicitud:', error);
+            alert('Error al cargar los vehículos. Por favor, intente nuevamente.');
+        });
+}
+
+function actualizarPaginacion(totalPages) {
+    const paginationContainer = document.querySelector('.table-pagination');
+    
+    if (totalPages <= 1) {
+        paginationContainer.style.display = 'none';
+        return;
+    }
+
+    paginationContainer.innerHTML = `
+        <button onclick="cambiarPagina(1)" class="first" ${currentPage === 1 ? 'disabled' : ''}>
+            Primera
+        </button>
+        <button onclick="cambiarPagina(${currentPage - 1})" class="prev" ${currentPage === 1 ? 'disabled' : ''}>
+            Anterior
+        </button>
+        <span class="page-info">Página ${currentPage} de ${totalPages}</span>
+        <button onclick="cambiarPagina(${currentPage + 1})" class="next" ${currentPage === totalPages ? 'disabled' : ''}>
+            Siguiente
+        </button>
+        <button onclick="cambiarPagina(${totalPages})" class="last" ${currentPage === totalPages ? 'disabled' : ''}>
+            Última
+        </button>
+    `;
+
+    paginationContainer.style.display = 'flex';
+}
+
+function cambiarPagina(newPage) {
+    if (newPage > 0 && newPage <= totalPages && newPage !== currentPage) {
+        currentPage = newPage;
+        cargarVehiculos();
+    }
 }
 
 function addVehicle(event) {
     event.preventDefault();
-    console.log("El comportamiento por defecto ha sido prevenido");
-
-    // Evitar múltiples envíos
-    if (isSubmitting) {
-        return;
-    }
-
-    isSubmitting = true;
     
-    // Obtener el formulario y el botón de envío
-    const form = document.getElementById('addVehicleForm');
-    const submitButton = form.querySelector('button[type="submit"]') || 
-                        form.querySelector('input[type="submit"]') ||
-                        document.querySelector('#addVehicleForm button');
-    // Deshabilitar el botón si existe
-    if (submitButton) {
-        submitButton.disabled = true;
-    }
-    
+    const formData = new FormData();
+    formData.append('placa', document.getElementById('placa').value);
+    formData.append('tipo', document.getElementById('tipo').value);
 
-    // Recoger datos del formulario
-    const placa = document.getElementById('placa').value.trim();
-    const tipo = document.getElementById('tipo').value;
-    const estacionamiento = document.getElementById('numero-estacionamiento').value;
-    const precio = document.getElementById('precio').value;
-    const fechaHora = new Date().toISOString().slice(0, 19).replace('T', ' ');
-    const estado = "Estacionado";
-
-    // Validar que todos los campos estén llenos
-    if (!placa || !tipo || !estacionamiento || !precio) {
-        alert("Por favor, complete todos los campos.");
-        console.error("Campos incompletos:", { placa, tipo, estacionamiento, precio });
-        return;
-    }
-
-    console.log("Datos recogidos:", { placa, tipo, estacionamiento, precio, fechaHora, estado });
-
-    // Crear objeto con los datos del vehículo
-    const vehicleData = {
-        placa,
-        tipo,
-        estacionamiento,
-        precio,
-        fechaHora,
-        estado
-    };
-
-    console.log("Enviando datos:", vehicleData);
-
-    // Enviar datos al servidor
-    fetch('agregar_vehiculo.php', {
+    fetch('addVehiculo.php', {
         method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(vehicleData),
+        body: formData
     })
     .then(response => response.json())
     .then(data => {
         if (data.success) {
-            alert("Vehículo agregado correctamente");
-            form.reset();
-            // Esperamos un momento antes de actualizar la tabla
-            setTimeout(actualizarTablaVehiculos, 100);
-        } else if (data.error && data.error.includes('Duplicate entry')) {
-            // Si es un error de duplicado, mostramos un mensaje más amigable
-            alert("Este vehículo ya está registrado para hoy");
+            alert(data.message);
+            document.getElementById('addVehicleForm').reset();
+            cargarVehiculos();
         } else {
-            alert("Error al agregar vehículo");
+            alert(data.message);
         }
     })
-    .catch((error) => {
-        console.error('Error en fetch:', error);
-        alert("Error de conexión al agregar vehículo");
-    })
-    .finally(() => {
-        isSubmitting = false;
-        if (submitButton) {
-            submitButton.disabled = false;
-        }
-    });
+    .catch(error => console.error('Error:', error));
 }
 
-// Función para mostrar una página específica
-function displayPage(page) {
-    console.log("Función displayPage llamada con página:", page);
-    const vehicleTable = document.querySelector("#vehicle-table tbody");
-    const rows = Array.from(vehicleTable.rows);
-    const totalRows = rows.length;
-    const start = (page - 1) * rowsPerPage;
-    const end = start + rowsPerPage;
-
-    console.log("Total de filas:", totalRows);
-    console.log("Mostrando filas desde", start, "hasta", end);
-
-    rows.forEach((row, index) => {
-        row.style.display = (index >= start && index < end) ? '' : 'none';
-    });
-
-    currentPage = page;
-    updatePaginationControls(totalRows);    
+function imprimirTicket(id) {
+    window.open(`imprimirVehiculo.php?id=${id}`, 'TicketEstacionamiento', 
+        'width=400,height=600,resizable=yes,scrollbars=yes');
 }
-    // Habilitar/deshabilitar botones de paginación según corresponda
-function updatePaginationControls(totalRows) {
-    const totalPages = Math.ceil(totalRows / rowsPerPage);
+
+function mostrarError(mensaje) {
+    const errorDiv = document.createElement('div');
+    errorDiv.className = 'alert alert-error';
+    errorDiv.textContent = mensaje;
+    document.body.appendChild(errorDiv);
     
-    // Actualizar el texto de la paginación
-    const paginationSpan = document.querySelector('.table-pagination span');
-    if (paginationSpan) {
-        paginationSpan.innerText = `Página ${currentPage} de ${totalPages}`;
-    }
-    
-    // Actualizar estado de los botones
-    const prevButton = document.querySelector('.table-pagination button:first-child');
-    const nextButton = document.querySelector('.table-pagination button:last-child');
-    if (prevButton) prevButton.disabled = (currentPage === 1);
-    if (nextButton) nextButton.disabled = (currentPage === totalPages);
+    setTimeout(() => {
+        errorDiv.remove();
+    }, 5000);
 }
 
-// Función para cambiar el número de entradas por página
-function changeEntries() {
-    rowsPerPage = parseInt(document.getElementById('entries').value);
-    currentPage = 1; // Resetear a la primera página
-    displayPage(currentPage);
-}
+async function imprimirTicket(idEstacionamiento) {
+    try {
+        console.log('Iniciando impresión para ID:', idEstacionamiento);
+        
+        // Obtener el ticket directamente
+        const response = await fetch(`imprimir_ticket.php?id=${idEstacionamiento}`, {
+            method: 'GET',
+            headers: {
+                'Accept': 'text/html',
+                'Cache-Control': 'no-cache'
+            },
+        });
 
-// Función para ir a la página siguiente
-function nextPage() {
-    const vehicleTable = document.querySelector("#vehicle-table tbody");
-    const totalRows = vehicleTable.rows.length;
-
-    if (currentPage * rowsPerPage < totalRows) {
-        currentPage++;
-        displayPage(currentPage);
-    }
-}
-
-// Función para ir a la página anterior
-function previousPage() {
-    if (currentPage > 1) {
-        displayPage(currentPage - 1);
-    }
-}
-
-// Función para buscar en la tabla
-function searchTable() {
-    const input = document.getElementById('search-input').value.toLowerCase();
-    const vehicleTable = document.querySelector("#vehicle-table tbody");
-    const rows = vehicleTable.getElementsByTagName('tr');
-
-    for (let i = 0; i < rows.length; i++) {
-        const cells = rows[i].getElementsByTagName('td');
-        let match = false;
-
-        for (let j = 0; j < cells.length; j++) {
-            if (cells[j].innerText.toLowerCase().includes(input)) {
-                match = true;
-                break;
-            }
+        if (!response.ok) {
+            throw new Error(`Error HTTP ${response.status}`);
         }
 
-        rows[i].style.display = match ? '' : 'none';
+        // Obtener el HTML del ticket directamente
+        const ticketHTML = await response.text();
+        
+        // Abrir ventana de impresión
+        const ventanaImpresion = window.open('', '_blank', 'width=400,height=600');
+        if (!ventanaImpresion) {
+            throw new Error('El navegador bloqueó la ventana emergente. Por favor, permita las ventanas emergentes para este sitio.');
+        }
+        
+        // Escribir el contenido HTML en la ventana
+        ventanaImpresion.document.open();
+        ventanaImpresion.document.write(ticketHTML);
+        ventanaImpresion.document.close();
+        
+        // Esperar a que la ventana cargue y luego imprimir
+        ventanaImpresion.onload = () => {
+            setTimeout(() => {
+                ventanaImpresion.print();
+                ventanaImpresion.onafterprint = () => {
+                    ventanaImpresion.close();
+                };
+            }, 500);
+        };
+        
+    } catch (error) {
+        console.error('Error en imprimirTicket:', error);
+        alert(`Error al generar el ticket: ${error.message}`);
     }
-
-    // Resetear la paginación cuando se realiza una búsqueda
-    currentPage = 1;
-    displayPage(currentPage);
-}
-
-function imprimirInformacion(id) {
-    // Aquí puedes implementar la lógica para imprimir la información
-    // Por ejemplo, podrías abrir una nueva ventana con los detalles del vehículo
-    window.open(`imprimir_vehiculo.php?id=${id}`, '_blank');
 }

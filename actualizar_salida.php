@@ -1,93 +1,115 @@
 <?php
-// Desactivar la salida de errores de PHP
 ini_set('display_errors', 0);
 error_reporting(E_ALL);
 
-// Asegurarse de que la respuesta sea siempre JSON
+date_default_timezone_set('America/Lima');
 header('Content-Type: application/json');
 
-// Definir SECURE_ACCESS si no está definido
 if (!defined('SECURE_ACCESS')) {
     define('SECURE_ACCESS', true);
 }
 
-// Función para manejar errores
 function handleError($message, $errorCode = 400) {
     http_response_code($errorCode);
     echo json_encode(['success' => false, 'error' => $message]);
     exit();
 }
 
-// Capturar todos los errores de PHP
-set_error_handler(function($errno, $errstr, $errfile, $errline) {
-    handleError("Error PHP: $errstr en $errfile:$errline", 500);
-});
-
 try {
-    // Verificar si la solicitud es POST
-    if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-        throw new Exception('Método no permitido');
-    }
-
-    // Obtener y decodificar los datos JSON
-    $inputJSON = file_get_contents('php://input');
-    $data = json_decode($inputJSON, true);
-
-    // Verificar si se recibieron los datos necesarios
-    if (!isset($data['id']) || !isset($data['fecha_salida']) || !isset($data['estado'])) {
-        throw new Exception('Datos incompletos');
-    }
-
-    $id = filter_var($data['id'], FILTER_VALIDATE_INT);
-    $fecha_salida = filter_var($data['fecha_salida'], FILTER_SANITIZE_SPECIAL_CHARS);
-    $estado = filter_var($data['estado'], FILTER_SANITIZE_SPECIAL_CHARS);
-
-    if ($id === false || $fecha_salida === false || $estado === false) {
-        throw new Exception('Datos inválidos');
-    }
-
-    // Incluir archivo de configuración
-    $configData = require_once 'config.php';
-    $conn = $configData['conn'];
-
-    // Verificar si la conexión es válida
-    if (!$conn || $conn->connect_error) {
+    $config_data = require_once 'config.php';
+    
+    if (!isset($config_data['conn']) || !$config_data['conn'] instanceof PDO) {
         throw new Exception('Error de conexión a la base de datos');
     }
-
-    // Preparar la consulta SQL
-    $sql = "UPDATE entrada SET estado = ?, fecha_salida = ? WHERE id = ?";
-
-    // Preparar la declaración
-    $stmt = $conn->prepare($sql);
-    if (!$stmt) {
-        throw new Exception('Error en la preparación de la consulta: ' . $conn->error);
-    }
-
-    $stmt->bind_param("ssi", $estado, $fecha_salida, $id);
-
-    // Ejecutar la consulta
-    if (!$stmt->execute()) {
-        throw new Exception('Error al ejecutar la consulta: ' . $stmt->error);
-    }
-
-    // Cerrar la declaración
-    $stmt->close();
-
-    // No cerramos la conexión aquí, ya que puede ser manejada por config.php
-
-    // Si todo va bien, devolver éxito
-    echo json_encode(['success' => true]);
-
-} catch (Exception $e) {
-    // Log del error
-    error_log("Error en actualizar_salida.php: " . $e->getMessage());
     
-    // Si estamos en modo debug, mostrar error detallado
-    if ($configData['config']['app']['debug']) {
-        handleError($e->getMessage(), 500);
-    } else {
-        handleError('Ha ocurrido un error en el servidor', 500);
+    $conn = $config_data['conn'];
+    $conn->exec("SET time_zone = '-05:00'");
+
+    $input = file_get_contents('php://input');
+    if (empty($input)) {
+        throw new Exception('No se recibieron datos');
     }
+
+    $data = json_decode($input, true);
+    if (!isset($data['id']) || !is_numeric($data['id'])) {
+        throw new Exception('ID inválido o no proporcionado');
+    }
+    
+    $id = intval($data['id']);
+    
+    $conn->beginTransaction();
+    
+    // Verificar el estado actual del vehículo
+    $check_stmt = $conn->prepare("SELECT estado FROM Estacionamiento WHERE id_estacionamiento = ?");
+    $check_stmt->execute([$id]);
+    $estado_actual = $check_stmt->fetchColumn();
+    
+    if ($estado_actual === false) {
+        throw new Exception('Registro no encontrado');
+    }
+    
+    if ($estado_actual === 'Partio') {
+        throw new Exception('El vehículo ya ha partido');
+    }
+    
+    // Actualizar el registro de estacionamiento
+    $update_stmt = $conn->prepare("
+        UPDATE Estacionamiento 
+        SET fecha_salida = CURRENT_DATE(),
+            hora_salida = CURRENT_TIME(),
+            estado = 'Partio'
+        WHERE id_estacionamiento = ?
+    ");
+    
+    $update_stmt->execute([$id]);
+    
+    // Obtener el precio
+    $precio_stmt = $conn->prepare("
+        SELECT t.precio 
+        FROM Tipo t 
+        JOIN Vehiculo v ON t.id_tipo = v.id_tipo
+        JOIN Estacionamiento e ON v.id_vehiculo = e.id_vehiculo
+        WHERE e.id_estacionamiento = ?
+    ");
+    
+    $precio_stmt->execute([$id]);
+    $precio = $precio_stmt->fetchColumn();
+    
+    if ($precio === false) {
+        throw new Exception('No se pudo obtener el precio');
+    }
+    
+    // Insertar el pago con la estructura actual de la tabla
+    $pago_stmt = $conn->prepare("
+        INSERT INTO Pago (id_estacionamiento, monto, estado_pago)
+        VALUES (?, ?, 'completo')
+    ");
+    
+    $pago_stmt->execute([$id, $precio]);
+    
+    $conn->commit();
+    
+    // Log de éxito
+    $fecha_log = new DateTime('now', new DateTimeZone('America/Lima'));
+    file_put_contents('debug.log', $fecha_log->format('Y-m-d H:i:s') . " - Actualización exitosa para ID: {$id}\n", FILE_APPEND);
+    
+    echo json_encode([
+        'success' => true,
+        'message' => 'Salida registrada correctamente'
+    ]);
+    
+} catch(Exception $e) {
+    $fecha_log = new DateTime('now', new DateTimeZone('America/Lima'));
+    file_put_contents(
+        'debug.log', 
+        $fecha_log->format('Y-m-d H:i:s') . " - Error en actualizar_salida.php: " . $e->getMessage() . "\n", 
+        FILE_APPEND
+    );
+    
+    if (isset($conn) && $conn->inTransaction()) {
+        $conn->rollBack();
+    }
+    
+    handleError($e->getMessage(), 500);
 }
 ?>

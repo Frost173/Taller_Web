@@ -87,3 +87,129 @@ body {
 .signup-container button:hover {
     background-color: rgba(255, 255, 255, 0.2);
 }
+
+/* Responsive Breakpoints */
+
+/* 1200px Breakpoint */
+@media screen and (max-width: 1200px) {
+    .container {
+        width: 90%;
+        max-width: 1000px;
+    }
+
+    .form-container, .signup-container {
+        padding: 40px;
+    }
+
+    .signup-container h2 {
+        font-size: 26px;
+    }
+
+    .signup-container p {
+        font-size: 16px;
+    }
+}
+
+/* 992px Breakpoint */
+@media screen and (max-width: 992px) {
+    .container {
+        width: 95%;
+    }
+
+    .form-container, .signup-container {
+        padding: 30px;
+    }
+
+    .form-container h2 {
+        font-size: 24px;
+    }
+
+    .form-container input {
+        padding: 12px;
+    }
+
+    .form-container button {
+        padding: 12px;
+        font-size: 15px;
+    }
+
+    .signup-container h2 {
+        font-size: 24px;
+    }
+
+    .signup-container p {
+        font-size: 15px;
+    }
+}
+
+/* 768px Breakpoint (Tablet) */
+@media screen and (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .form-container, .signup-container {
+        padding: 40px 20px;
+        flex: none;
+        width: 100%;
+    }
+
+    .signup-container {
+        border-radius: 0 0 20px 20px;
+    }
+
+    .form-container h2 {
+        text-align: center;
+    }
+
+    .signup-container {
+        text-align: center;
+    }
+
+    .signup-container h2 {
+        font-size: 22px;
+    }
+
+    .signup-container p {
+        font-size: 14px;
+    }
+}
+
+/* 480px Breakpoint (Mobile) */
+@media screen and (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+
+    .form-container, .signup-container {
+        padding: 30px 15px;
+    }
+
+    .form-container h2 {
+        font-size: 20px;
+    }
+
+    .form-container input {
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    .form-container button {
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    .signup-container h2 {
+        font-size: 20px;
+    }
+
+    .signup-container p {
+        font-size: 13px;
+    }
+
+    .signup-container button {
+        padding: 8px 15px;
+        font-size: 14px;
+    }
+}

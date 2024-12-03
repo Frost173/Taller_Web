@@ -5,13 +5,15 @@
     border-radius: 10px;
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
     max-width: 500px;
-    margin: auto;
+    width: 90%;
+    margin: 80px auto 20px; /* Añadido margen superior para compensar el header fijo */
 }
 
 .settings-container h2 {
     color: #333;
     font-size: 20px;
     margin-bottom: 20px;
+    text-align: center;
 }
 
 .settings-container h2 i {
@@ -36,6 +38,7 @@
     font-size: 14px;
     border: 1px solid #ccc;
     border-radius: 5px;
+    box-sizing: border-box;
 }
 
 .change-password-form input:focus {
@@ -54,8 +57,37 @@
     cursor: pointer;
     width: 100%;
     margin-top: 10px;
+    transition: background-color 0.3s ease;
 }
 
 .change-password-form .btn:hover {
     background-color: #0056b3;
+}
+
+/* Media Queries */
+@media screen and (max-width: 600px) {
+    .settings-container {
+        width: 95%;
+        padding: 15px;
+        margin-top: 70px;
+    }
+
+    .change-password-form .btn {
+        font-size: 14px;
+        padding: 8px 15px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .settings-container {
+        width: 100%;
+        border-radius: 0;
+        margin-top: 60px;
+    }
+
+    .change-password-form input,
+    .change-password-form .btn {
+        font-size: 12px;
+        padding: 8px;
+    }
 }

@@ -1,36 +1,54 @@
 <?php
-// Incluimos la configuración de la base de datos
-include 'config.php';
-
-// Iniciamos la sesión
 session_start();
-
-// Verificamos si el formulario ha sido enviado
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Obtenemos los datos del formulario
-    $correo = $_POST['correo'];
-    $contrasena = $_POST['contrasena'];
-
-    // Preparamos la consulta SQL para verificar el usuario
-    $sql = "SELECT * FROM usuarios WHERE correo = ? AND contrasena = ?";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ss", $correo, $contrasena);
-    $stmt->execute();
-    $result = $stmt->get_result();
-
-    // Verificamos si se encontró el usuario
-    if ($result->num_rows > 0) {
-        // Usuario autenticado, redirigimos a index.html
-        header("Location: index.html");
-        exit();
-    } else {
-        // Credenciales incorrectas, mensaje de error
-        echo "<script>alert('Correo o contraseña incorrectos');</script>";
-        echo "<script>window.location.href = 'Sesion.html';</script>";
-    }
-
-    // Cerramos la consulta y la conexión
-    $stmt->close();
-    $conn->close();
-}
 ?>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="styleSesion.css">
+    <title>Iniciar Sesión</title>
+</head>
+<body>
+    <div class="container" id="container">
+        <div class="form-container sign-in">
+            <form id="login-form" action="sesionAgregado.php" method="POST">
+                <h1>Inicia Sesión</h1>
+                <?php if(isset($_SESSION['error'])): ?>
+                    <div class="alert alert-danger">
+                        <?php 
+                        echo $_SESSION['error'];
+                        unset($_SESSION['error']);
+                        ?>
+                    </div>
+                <?php endif; ?>
+                <?php if(isset($_SESSION['success'])): ?>
+                    <div class="alert alert-success">
+                        <?php 
+                        echo $_SESSION['success'];
+                        unset($_SESSION['success']);
+                        ?>
+                    </div>
+                <?php endif; ?>
+                <input type="email" name="correo" placeholder="Correo" required>
+                <input type="password" name="contrasena" placeholder="Contraseña" required>
+                <a href="#">¿Olvidaste tu contraseña?</a>
+                <button type="submit">Iniciar Sesión</button>
+            </form>
+        </div>
+
+        <form action="Registro.php">
+            <div class="toggle-container">
+                <div class="toggle">
+                    <div class="toggle-panel toggle-right">
+                        <h1>¿No tienes una cuenta?</h1>
+                        <p>Regístrate para acceder a todas las funciones</p>
+                        <button type="submit">Registrarse</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

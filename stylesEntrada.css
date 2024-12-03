@@ -1,177 +1,285 @@
-/* Sección de entradas */
-.entry-section {
+/* General */
+
+
+h3 {
+    color: #333;
+}
+
+
+main {
+    flex-grow: 1;
+    padding: 20px;
+}
+
+/* General styling for the main container */
+.main-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    background-color: #f8f8f8;
+    font-family: Arial, sans-serif;
+}
+
+.top-panels {
     display: flex;
     justify-content: space-between;
-    margin-top: 20px;
+    gap: 20px;
 }
 
-/* Formulario de añadir vehículo */
-.add-entry {
-    background-color: #f8f9fa;
+/* Styling for the form container */
+.vehicle-panel {
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
     padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 45%;
+    max-width: 400px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    flex: 1;
 }
-
-.add-entry h3 {
-    margin-bottom: 20px;
+/* Title styling for both panels */
+.vehicle-panel h3 {
+    margin: 0;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e0e0e0;
+    font-size: 1.2em;
+    color: #333;
 }
-
-.form-group {
-    margin-bottom: 15px;
+/* Main Content */
+.main-content {
+    display: flex;
+    justify-content: space-between;
 }
-
-.form-group label {
+/* Form elements styling */
+.vehicle-panel label {
     display: block;
+    margin-top: 15px;
     margin-bottom: 5px;
     font-weight: bold;
+    color: #555;
 }
-
-.form-group input, 
-.form-group select {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-.btn-submit {
-    background-color: #3498db;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    width: 100%;
-}
-
-.btn-submit:hover {
-    background-color: #2980b9;
-}
-
-/* Limitaciones de vehículos */
-.vehicle-limitations {
-    background-color: #f8f9fa;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 45%;
-}
-
-.vehicle-limitations h3 {
-    margin-bottom: 20px;
-}
-
-.limit-list {
-    list-style-type: none;
-    padding: 0;
-}
-
-.limit-list li {
-    background-color: #fff;
-    padding: 10px;
+.vehicle-panel input[type="text"],
+.vehicle-panel select {
+    width: calc(100% - 12px);
+    padding: 8px;
+    border: 1px solid #cccccc;
+    border-radius: 3px;
+    font-size: 14px;
+    box-sizing: border-box;
     margin-bottom: 10px;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    font-size: 16px;
+    background-color: #f9f9f9;
+    color: #333;
 }
-
-/* Tabla de entradas */
-.admin-entradas {
+/* Styling for the submit button */
+.vehicle-panel .add-vehicle {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    border: none;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 3px;
+    font-size: 14px;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+}
+.vehicle-panel .add-vehicle:hover {
+    background-color: #0056b3;
+}
+.vehicle-list {
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     margin-top: 20px;
 }
-
-.admin-entradas h2 {
-    font-size: 24px;
-    margin-bottom: 10px;
+.vehicle-list h3 {
+    margin: 0;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e0e0e0;
+    font-size: 1.2em;
+    color: #333;
 }
-
-.table-entradas {
+.table-controls {
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+#vehicle-table {
     width: 100%;
     border-collapse: collapse;
-    margin-bottom: 20px;
+    margin-top: 10px;
 }
-
-.table-entradas thead {
-    background-color: #f4f4f4;
-    text-align: left;
+#vehicle-table thead {
+    background-color: #f2f2f2;
 }
-
-.table-entradas th, 
-.table-entradas td {
-    padding: 12px;
-    border: 1px solid #ddd;
+#vehicle-table th, 
+#vehicle-table td {
+    padding: 8px;
     text-align: center;
+    border: 1px solid #ddd;
 }
-
-.table-entradas th {
-    font-weight: bold;
-}
-
-.table-entradas tbody tr:nth-child(even) {
+#vehicle-table tbody tr:nth-child(even) {
     background-color: #f9f9f9;
 }
-
-.table-entradas tbody tr:hover {
+#vehicle-table tbody tr:hover {
     background-color: #f1f1f1;
 }
-
-/* Estilos para el estado */
-.estado {
-    padding: 5px 10px;
-    border-radius: 5px;
-}
-
-.activado {
-    background-color: #28a745;
-    color: #fff;
-}
-
-.desactivado {
-    background-color: #dc3545;
-    color: #fff;
-}
-
-/* Botones de acción */
-.btn {
-    padding: 8px 12px;
-    border: none;
-    cursor: pointer;
-    margin: 0 2px;
-}
-
-.salida {
-    background-color: #28a745;
-    color: white;
-}
-
-.editar {
-    background-color: #007bff;
-    color: white;
-}
-
-.borrar {
-    background-color: #dc3545;
-    color: white;
-}
-
-/* Paginación */
-.pagination {
+.table-pagination {
+    margin-top: 10px;
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
+    gap: 5px;
 }
-
-.pagination button {
-    padding: 8px 12px;
-    margin: 0 5px;
-    border: none;
-    background-color: #007bff;
-    color: white;
+.table-pagination button {
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    background-color: #f2f2f2;
     cursor: pointer;
 }
-
-.pagination button:hover {
+.table-pagination button:hover {
+    background-color: #ddd;
+}
+.vehicle-status {
+    background-color: #198754;
+    color: white;
+    padding: 2px 8px;
+    border-radius: 15px;
+    font-weight: bold;
+    font-size: 12px;
+}
+.action-button {
+    background-color: #007bff;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.action-button:hover {
     background-color: #0056b3;
+}
+/* Vehicle List */
+.table-common {
+    width: 100%;
+    border-collapse: collapse;
+}
+.table-common th, 
+.table-common td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+.table-common tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+.table-common tbody tr:hover {
+    background-color: #f1f1f1;
+}
+/* Ajustar el ancho de los paneles superiores */
+.vehicle-panel {
+    flex: 1;
+    max-width: calc(50% - 10px); /* 10px es la mitad del gap */
+}
+/* Ajustar el estilo de la lista de vehículos para ocupar todo el ancho */
+.vehicle-list {
+    width: 100%;
+}
+.vehicle-departed {
+    background-color: #f8f9fa;
+    color: #6c757d;
+}
+.vehicle-active {
+    background-color: #ffffff;
+}
+/* Añade estos estilos a tu archivo stylesEntrada.css */
+.table-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+.entries-section {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.search-section {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+#search-input {
+    padding: 6px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    min-width: 200px;
+}
+#search-input:focus {
+    outline: none;
+    border-color: #4a90e2;
+    box-shadow: 0 0 3px rgba(74, 144, 226, 0.3);
+}
+#search-results {
+    position: absolute;
+    margin-top: 5px;
+    padding: 8px;
+    background-color: #f8f8f8;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+/* Estilos para resaltar resultados de búsqueda */
+.highlight {
+    background-color: #fff3cd;
+    padding: 2px;
+    border-radius: 2px;
+}
+/* Estilos responsivos */
+@media (max-width: 1200px) {
+    .main-content {
+        padding: 15px;
+    }
+
+    .vehicle-panel {
+        max-width: 100%;
+    }
+
+    .vehicle-list {
+        padding: 15px;
+    }
+}
+@media (max-width: 992px) {
+    .top-panels {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .vehicle-panel {
+        max-width: 100%;
+    }
+}
+@media (max-width: 768px) {
+    .table-controls {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    #search-input {
+        min-width: 100%;
+    }
+}
+@media (max-width: 480px) {
+    .entries-section,
+    .search-section {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+    }
 }
